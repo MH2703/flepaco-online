@@ -5,30 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>FLEPACO – Leistungen</title>
   <meta name="description" content="FLEPACO: Flexible Packaging Consulting – Leistungen, Vorgehen, Kontakt." />
-  <style>
-    :root{--bg:#0b1220;--text:#eaf0ff;--muted:#b9c6e5;--line:rgba(255,255,255,.12);--brand:#5eead4;}
-    *{box-sizing:border-box}
-    body{margin:0;font-family:system-ui;background:var(--bg);color:var(--text)}
-    a{color:inherit}
-    .wrap{max-width:1060px;margin:0 auto;padding:22px}
-    .nav{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap}
-    .links{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
-    .links a{text-decoration:none;opacity:.9}
-    .btn{padding:10px 14px;border-radius:12px;border:1px solid var(--line);text-decoration:none}
-    .btn.primary{background:var(--brand);color:#06201c;border-color:transparent;font-weight:700}
-    .hero{padding:44px 0 18px;display:grid;gap:14px;grid-template-columns:1.2fr .8fr}
-    .card{border:1px solid var(--line);border-radius:18px;padding:18px;background:rgba(255,255,255,.04)}
-    h1{margin:0 0 10px;font-size:40px;line-height:1.05}
-    .muted{color:var(--muted)}
-    .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-    .footer{margin-top:28px;padding:18px 0;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
-    @media(max-width:900px){.hero{grid-template-columns:1fr}.grid3{grid-template-columns:1fr}h1{font-size:32px}}
-  </style>
+  <link rel="stylesheet" href="../assets/style.css">
 </head>
 <body>
   <div class="wrap">
     <header class="nav">
-      <div style="font-weight:800">FLEPACO</div>
+      <div class="brand">FLEPACO</div>
       <nav class="links">
         <a href="#leistungen">Leistungen</a>
         <a href="#ablauf">Ablauf</a>
@@ -42,13 +24,14 @@
       <div class="card">
         <h1>Flexible Packaging Consulting<br><span style="color:var(--brand)">für bessere Entscheidungen</span></h1>
         <p class="muted" style="font-size:18px;line-height:1.5;margin:0 0 14px">
-          Platzhalter: 1–2 Sätze, was du anbietest und für wen (z. B. Materialauswahl, Lieferanten, Qualität, Projekte).
+          Platzhalter: 1–2 Sätze, was du anbietest und für wen.
         </p>
         <a class="btn primary" href="#kontakt">Erstgespräch anfragen</a>
         <a class="btn" href="#leistungen" style="margin-left:8px">Leistungen ansehen</a>
       </div>
+
       <aside class="card">
-        <h2 style="margin:0 0 8px">Kurzprofil</h2>
+        <h2>Kurzprofil</h2>
         <p class="muted" style="margin:0">
           • Fokus: Flexible Verpackungen<br/>
           • Standort: … / Remote<br/>
@@ -58,7 +41,7 @@
     </section>
 
     <section id="leistungen" style="padding:18px 0">
-      <h2 style="margin:0 0 10px">Leistungen</h2>
+      <h2>Leistungen</h2>
       <div class="grid3">
         <div class="card"><b>Analyse & Beratung</b><p class="muted">Bewertung von Optionen, Anforderungen, Risiken & Kosten.</p></div>
         <div class="card"><b>Material & Spezifikation</b><p class="muted">Struktur, Barriere, Siegel, Migration, Nachhaltigkeit.</p></div>
@@ -67,22 +50,23 @@
     </section>
 
     <section id="ablauf" style="padding:18px 0">
-      <h2 style="margin:0 0 10px">Ablauf</h2>
+      <h2>Ablauf</h2>
       <div class="grid3">
         <div class="card"><b>1) Erstgespräch</b><p class="muted">Ziele klären, Status aufnehmen, nächste Schritte.</p></div>
-        <div class="card"><b>2) Konzept</b><p class="muted">Optionen & Empfehlung mit klaren Trade-offs.</p></div>
+        <div class="card"><b>2) Empfehlung</b><p class="muted">Optionen & Empfehlung mit klaren Trade-offs.</p></div>
         <div class="card"><b>3) Umsetzung</b><p class="muted">Begleitung bis zur stabilen Serie.</p></div>
       </div>
     </section>
 
     <section id="kontakt" style="padding:18px 0">
-      <h2 style="margin:0 0 10px">Kontakt</h2>
+      <h2>Kontakt</h2>
       <div class="card">
         <p class="muted" style="margin:0">
           E-Mail: <a href="mailto:kontakt@flepaco.com">kontakt@flepaco.com</a><br/>
           Telefon: <a href="tel:+49XXXXXXXXX">+49 …</a>
         </p>
       </div>
+
       <div class="footer">
         © <span id="y"></span> FLEPACO · <a href="../impressum.html">Impressum</a> · <a href="../datenschutz.html">Datenschutz</a>
       </div>
