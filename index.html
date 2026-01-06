@@ -4,20 +4,33 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>FLEPACO</title>
-  <meta name="robots" content="noindex" />
+  <meta name="description" content="FLEPACO – Flexible Packaging Consulting" />
   <style>
-    body{font-family:system-ui;margin:0;display:grid;place-items:center;min-height:100vh;background:#0b1220;color:#eaf0ff}
-    .box{max-width:640px;padding:24px;border:1px solid rgba(255,255,255,.12);border-radius:16px;background:rgba(255,255,255,.05)}
-    a{display:inline-block;margin-right:12px;padding:10px 14px;border-radius:12px;text-decoration:none;border:1px solid rgba(255,255,255,.18);color:#eaf0ff}
-    a.primary{background:#5eead4;color:#06201c;border-color:transparent;font-weight:700}
+    :root{--bg:#0b1220;--text:#eaf0ff;--muted:#b9c6e5;--line:rgba(255,255,255,.12);--brand:#5eead4;}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;background:var(--bg);color:var(--text);min-height:100vh;display:grid;place-items:center;padding:24px}
+    .card{max-width:720px;width:100%;border:1px solid var(--line);border-radius:18px;padding:22px;background:rgba(255,255,255,.04)}
+    .top{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+    a{color:inherit;text-decoration:none}
+    .btn{display:inline-block;padding:10px 14px;border-radius:12px;border:1px solid var(--line)}
+    .btn.primary{background:var(--brand);color:#06201c;border-color:transparent;font-weight:700}
+    .muted{color:var(--muted)}
+    .logo{display:flex;align-items:center;gap:10px}
+    .logo img{height:34px;width:auto;display:block}
   </style>
 </head>
 <body>
-  <div class="box">
-    <h1 style="margin:0 0 6px">FLEPACO</h1>
-    <p style="opacity:.8;margin:0 0 14px">Bitte Sprache wählen / Please choose language</p>
-    <a class="primary" href="./de/">Deutsch</a>
-    <a href="./en/">English</a>
+  <div class="card">
+    <div class="top">
+      <div class="logo">
+        <img src="/flepaco-online/assets/logo.svg" alt="FLEPACO">
+      </div>
+      <div>
+        <a class="btn primary" href="/flepaco-online/de/">Deutsch</a>
+        <a class="btn" href="/flepaco-online/en/" style="margin-left:8px">English</a>
+      </div>
+    </div>
+    <p class="muted" style="margin:14px 0 0">Bitte Sprache wählen / Please choose language</p>
   </div>
 </body>
 </html>
