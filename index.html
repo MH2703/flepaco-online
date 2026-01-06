@@ -1,23 +1,77 @@
 <!doctype html>
-<html lang="de">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>FLEPACO</title>
-  <meta name="robots" content="noindex" />
-  <style>
-    body{font-family:system-ui;margin:0;display:grid;place-items:center;min-height:100vh;background:#0b1220;color:#eaf0ff}
-    .box{max-width:640px;padding:24px;border:1px solid rgba(255,255,255,.12);border-radius:16px;background:rgba(255,255,255,.05)}
-    a{display:inline-block;margin-right:12px;padding:10px 14px;border-radius:12px;text-decoration:none;border:1px solid rgba(255,255,255,.18);color:#eaf0ff}
-    a.primary{background:#5eead4;color:#06201c;border-color:transparent;font-weight:700}
-  </style>
+  <title>FLEPACO – Services</title>
+  <meta name="description" content="FLEPACO: Flexible Packaging Consulting – services, process, contact." />
+  <link rel="stylesheet" href="../assets/style.css">
 </head>
 <body>
-  <div class="box">
-    <h1 style="margin:0 0 6px">FLEPACO</h1>
-    <p style="opacity:.8;margin:0 0 14px">Bitte Sprache wählen / Please choose language</p>
-    <a class="primary" href="./de/">Deutsch</a>
-    <a href="./en/">English</a>
+  <div class="wrap">
+    <header class="nav">
+      <div class="brand">FLEPACO</div>
+      <nav class="links">
+        <a href="#services">Services</a>
+        <a href="#process">Process</a>
+        <a href="#contact" class="btn">Contact</a>
+        <a href="../de/" class="btn">DE</a>
+        <a href="../" class="btn">Home</a>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="card">
+        <h1>Flexible Packaging Consulting<br><span style="color:var(--brand)">to support better decisions</span></h1>
+        <p class="muted" style="font-size:18px;line-height:1.5;margin:0 0 14px">
+          Placeholder: 1–2 sentences on what you do and for whom.
+        </p>
+        <a class="btn primary" href="#contact">Request a call</a>
+        <a class="btn" href="#services" style="margin-left:8px">View services</a>
+      </div>
+
+      <aside class="card">
+        <h2>Profile</h2>
+        <p class="muted" style="margin:0">
+          • Focus: flexible packaging<br/>
+          • Location: … / remote<br/>
+          • Response time: 24–48h
+        </p>
+      </aside>
+    </section>
+
+    <section id="services" style="padding:18px 0">
+      <h2>Services</h2>
+      <div class="grid3">
+        <div class="card"><b>Analysis & consulting</b><p class="muted">Evaluate options, requirements, risks, and costs.</p></div>
+        <div class="card"><b>Materials & specifications</b><p class="muted">Structure, barrier, sealing, migration, sustainability.</p></div>
+        <div class="card"><b>Project support</b><p class="muted">Suppliers, testing, approvals, ramp-up, troubleshooting.</p></div>
+      </div>
+    </section>
+
+    <section id="process" style="padding:18px 0">
+      <h2>Process</h2>
+      <div class="grid3">
+        <div class="card"><b>1) Intro call</b><p class="muted">Clarify goals, assess status, define next steps.</p></div>
+        <div class="card"><b>2) Recommendation</b><p class="muted">Options & a clear recommendation with trade-offs.</p></div>
+        <div class="card"><b>3) Delivery</b><p class="muted">Support through stable production.</p></div>
+      </div>
+    </section>
+
+    <section id="contact" style="padding:18px 0">
+      <h2>Contact</h2>
+      <div class="card">
+        <p class="muted" style="margin:0">
+          Email: <a href="mailto:kontakt@flepaco.com">kontakt@flepaco.com</a><br/>
+          Phone: <a href="tel:+49XXXXXXXXX">+49 …</a>
+        </p>
+      </div>
+
+      <div class="footer">
+        © <span id="y"></span> FLEPACO · <a href="../impressum.html">Imprint</a> · <a href="../datenschutz.html">Privacy</a>
+      </div>
+    </section>
   </div>
+  <script>document.getElementById("y").textContent=new Date().getFullYear();</script>
 </body>
 </html>
