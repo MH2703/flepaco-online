@@ -29,3 +29,16 @@ h2{margin:0 0 10px;font-size:22px}
   .grid3{grid-template-columns:1fr}
   h1{font-size:32px}
 }
+
+/* Header Logo Fix */
+.brand{
+  display:flex;
+  align-items:center;
+  min-height:40px;
+}
+
+.brand img{
+  height:36px;
+  width:auto;
+  display:block;
+}
