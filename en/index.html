@@ -9,12 +9,23 @@
   <meta name="robots" content="index,follow">
 
   <link rel="icon" href="/flepaco-online/assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="/flepaco-online/assets/style.css?v=4">
+  <link rel="stylesheet" href="/flepaco-online/assets/style.css?v=5">
 
   <style>
     html{ scroll-behavior:smooth; }
-    body{ scroll-snap-type:y mandatory; overflow-y:scroll; }
-    .page{ scroll-snap-align:start; scroll-margin-top:110px; }
+
+    @media (min-width: 900px){
+      body{
+        scroll-snap-type:y mandatory;
+        overflow-y:scroll;
+      }
+      .page{
+        scroll-snap-align:start;
+      }
+    }
+
+    .page{ scroll-margin-top:110px; }
+
     .links a.active{
       background:rgba(20,184,166,.18);
       color:#06201c;
