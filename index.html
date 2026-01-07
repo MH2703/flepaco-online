@@ -9,12 +9,12 @@
 
   <style>
     :root{
-      --bg:#f4f6fb;     /* minimaler Grauton */
+      --bg:#f4f6fb;       /* minimaler Grauton */
       --text:#0b1220;
       --muted:#5f6b86;
-      --line:#e3e7f2;
+      --line:rgba(11,18,32,.12);
       --brand:#5eead4;
-      --shadow:0 10px 30px rgba(11,18,32,.06);
+      --shadow:0 10px 28px rgba(11,18,32,.08);
     }
 
     *{box-sizing:border-box}
@@ -26,43 +26,42 @@
       color:var(--text);
       min-height:100vh;
 
-      /* Footer immer unten: 3 Zeilen Layout */
-      display:grid;
-      grid-template-rows: 1fr auto;
+      /* Footer wirklich unten */
+      display:flex;
+      flex-direction:column;
       padding:24px;
     }
 
     main{
+      flex:1;                         /* nimmt freien Platz */
+      display:flex;
+      align-items:center;             /* vertikal zentriert */
+      justify-content:center;         /* horizontal zentriert */
+      text-align:center;
+    }
+
+    .content{
       width:100%;
       max-width:760px;
-      margin:0 auto;
-
-      /* Inhalt vertikal mittig im freien Raum */
-      display:grid;
-      place-items:center;
-      text-align:center;
       padding:48px 32px;
     }
 
-    .stack{
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      gap:14px;
-    }
-
+    /* Symmetrie: volle Breite, dann sauber zentrieren */
     .logo{
+      width:100%;
       display:flex;
       justify-content:center;
       align-items:center;
-      line-height:0; /* verhindert optisches Versetzen */
-      color:var(--text); /* steuert SVG (currentColor) */
+      line-height:0;                  /* verhindert „Versatz“ */
+      margin-bottom:14px;
+      color:var(--text);              /* steuert SVG (currentColor) */
     }
 
     .logo img{
-      height:76px;
+      height:74px;
       width:auto;
       display:block;
+      margin:0 auto;                  /* extra-sicher: exakt zentriert */
     }
 
     h1{
@@ -72,32 +71,28 @@
       letter-spacing:.2px;
     }
 
-    /* Edlere „Buttons“ (Chips) */
     .lang{
+      margin-top:22px;
       display:flex;
       justify-content:center;
       gap:14px;
-      margin-top:22px;
       flex-wrap:wrap;
     }
 
+    /* Edle „Chips“ */
     .chip{
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      gap:10px;
-
       padding:12px 18px;
       border-radius:999px;
-      border:1px solid rgba(11,18,32,.10);
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.80);
+      box-shadow:var(--shadow);
+
       text-decoration:none;
       color:var(--text);
-
-      background:rgba(255,255,255,.72);
-      box-shadow: var(--shadow);
-
       font-weight:600;
-      letter-spacing:.1px;
 
       transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
       -webkit-tap-highlight-color: transparent;
@@ -105,32 +100,23 @@
 
     .chip:hover{
       transform:translateY(-1px);
-      box-shadow:0 14px 40px rgba(11,18,32,.10);
-      background:rgba(255,255,255,.86);
+      box-shadow:0 14px 36px rgba(11,18,32,.12);
+      background:rgba(255,255,255,.92);
     }
 
     .chip.primary{
       border-color:transparent;
       background:linear-gradient(180deg, rgba(94,234,212,.95), rgba(94,234,212,.78));
       color:#06201c;
-      box-shadow:0 14px 40px rgba(94,234,212,.18);
-    }
-
-    .chip.primary:hover{
-      box-shadow:0 18px 50px rgba(94,234,212,.25);
+      box-shadow:0 14px 36px rgba(94,234,212,.22);
     }
 
     footer{
-      width:100%;
-      max-width:760px;
-      margin:0 auto;
-      padding:14px 8px;
-
       display:flex;
-      gap:10px;
       justify-content:center;
       flex-wrap:wrap;
-
+      gap:10px;
+      padding:14px 8px;
       font-size:13px;
       color:var(--muted);
     }
@@ -143,16 +129,15 @@
     }
 
     footer a:hover{
-      background:rgba(255,255,255,.7);
-      text-decoration:none;
+      background:rgba(255,255,255,.85);
     }
 
     @media(max-width:600px){
       body{padding:18px}
-      main{padding:36px 14px}
+      .content{padding:36px 14px}
       .logo img{height:58px}
       h1{font-size:20px}
-      .chip{width:100%; max-width:280px} /* edel & gut klickbar mobil */
+      .chip{width:100%; max-width:280px}
     }
   </style>
 </head>
@@ -160,17 +145,17 @@
 <body>
 
   <main>
-    <div class="stack">
-      <div class="logo" aria-label="FLEPACO">
+    <div class="content">
+      <div class="logo">
         <img src="/flepaco-online/assets/logo.svg" alt="FLEPACO">
       </div>
 
       <h1>Flexible Packaging Consulting</h1>
-    </div>
 
-    <div class="lang" aria-label="Language selection">
-      <a class="chip primary" href="/flepaco-online/de/">Deutsch</a>
-      <a class="chip" href="/flepaco-online/en/">English</a>
+      <div class="lang" aria-label="Language selection">
+        <a class="chip primary" href="/flepaco-online/de/">Deutsch</a>
+        <a class="chip" href="/flepaco-online/en/">English</a>
+      </div>
     </div>
   </main>
 
