@@ -9,26 +9,82 @@
   <meta name="robots" content="index,follow">
 
   <link rel="icon" href="/flepaco-online/assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="/flepaco-online/assets/style.css?v=5">
+  <link rel="stylesheet" href="/flepaco-online/assets/style.css?v=6">
 
   <style>
     html{ scroll-behavior:smooth; }
 
+    /* ===== Scroll Snap: desktop only & softer ===== */
     @media (min-width: 900px){
       body{
-        scroll-snap-type:y mandatory;
+        scroll-snap-type:y proximity;
         overflow-y:scroll;
       }
       .page{
         scroll-snap-align:start;
+        scroll-snap-stop:normal;
       }
+      /* Contact: no snap (better for longer content/forms) */
+      #contact{ scroll-snap-align:none; }
     }
 
     .page{ scroll-margin-top:110px; }
 
-    .links a.active{
-      background:rgba(20,184,166,.18);
-      color:#06201c;
+    /* ===== Premium active nav: underline + dot ===== */
+    .links a[href^="#"]{ position:relative; }
+    .links a[href^="#"]::after{
+      content:"";
+      position:absolute;
+      left:12px;
+      right:12px;
+      bottom:6px;
+      height:2px;
+      border-radius:2px;
+      background:transparent;
+      opacity:.9;
+      transform:scaleX(.6);
+      transform-origin:center;
+      transition:background .15s ease, transform .15s ease;
+    }
+    .links a[href^="#"]::before{
+      content:"";
+      position:absolute;
+      left:50%;
+      bottom:4px;
+      width:6px;
+      height:6px;
+      border-radius:999px;
+      background:transparent;
+      transform:translateX(-50%);
+      transition:background .15s ease;
+    }
+    .links a.active[href^="#"]::after{
+      background:var(--brand);
+      transform:scaleX(1);
+    }
+    .links a.active[href^="#"]::before{
+      background:var(--brand);
+    }
+
+    /* ===== Hero refinement ===== */
+    .hero h1{
+      max-width:24ch;
+      margin-bottom:12px;
+    }
+    .hero p{
+      max-width:64ch;
+      font-size:18px;
+      line-height:1.55;
+    }
+    .ctaRow{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top:14px;
+    }
+    .btn.secondary{
+      background:rgba(255,255,255,.55);
+      box-shadow:none;
     }
   </style>
 </head>
@@ -43,6 +99,7 @@
       </a>
     </div>
     <nav class="links">
+      <a href="#top">Home</a>
       <a href="#services">Services</a>
       <a href="#process">Process</a>
       <a href="#contact" class="btn">Contact</a>
@@ -58,11 +115,14 @@
       </h1>
 
       <p class="muted">
-        I support companies in evaluating and implementing flexible packaging solutions –
+        I support companies in evaluating and implementing flexible packaging solutions —
         independent, structured and practical.
       </p>
 
-      <a href="#contact" class="btn primary">Request an initial call</a>
+      <div class="ctaRow">
+        <a href="#contact" class="btn primary">Request an initial call</a>
+        <a href="#services" class="btn secondary">View services</a>
+      </div>
     </div>
 
     <aside class="card">
