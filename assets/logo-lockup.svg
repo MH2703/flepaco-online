@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 140" role="img" aria-label="FLEPACO – Flexible Packaging Consulting">
+  <style>
+    .word {
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      font-size: 72px;
+      font-weight: 800;
+      letter-spacing: 3px;
+    }
+    .tag {
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      font-size: 21px;
+      font-weight: 600;
+      letter-spacing: 2.6px;
+    }
+  </style>
+
+  <g transform="translate(280,78)">
+    <text class="word" text-anchor="middle" dominant-baseline="middle">
+      <tspan fill="#14b8a6">F</tspan>
+      <tspan fill="#0b1220">LE</tspan>
+      <tspan fill="#14b8a6">P</tspan>
+      <tspan fill="#0b1220">A</tspan>
+      <tspan fill="#14b8a6">C</tspan>
+      <tspan fill="#0b1220">O</tspan>
+    </text>
+  </g>
+
+  <text x="280" y="125" class="tag" text-anchor="middle" fill="#0b1220">
+    FLEXIBLE PACKAGING CONSULTING
+  </text>
+</svg>
