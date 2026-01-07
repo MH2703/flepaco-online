@@ -9,165 +9,80 @@
   <meta name="robots" content="index,follow">
 
   <link rel="icon" href="/flepaco-online/assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="/flepaco-online/assets/style.css?v=8">
+  <link rel="stylesheet" href="/flepaco-online/assets/style.css?v=9">
 
   <style>
     html{ scroll-behavior:smooth; }
 
-    /* ---------- Focus / Accessibility (subtle, premium) ---------- */
-    a:focus-visible, button:focus-visible{
+    /* Focus (Accessibility) */
+    a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible{
       outline:3px solid rgba(20,184,166,.35);
       outline-offset:3px;
-      border-radius:12px;
+      border-radius:10px;
     }
 
-    /* ---------- Scroll Snap: Desktop only & soft ---------- */
-    @media (min-width: 900px){
-      body{
-        scroll-snap-type:y proximity;
-        overflow-y:scroll;
-      }
-      .page{
-        scroll-snap-align:start;
-        scroll-snap-stop:normal;
-      }
-      /* Kontakt: kein Snap (für längere Inhalte/Forms) */
+    /* Scroll Snap: Desktop only */
+    @media (min-width:900px){
+      body{ scroll-snap-type:y proximity; overflow-y:scroll; }
+      .page{ scroll-snap-align:start; scroll-snap-stop:normal; }
       #kontakt{ scroll-snap-align:none; }
     }
+    .page{ scroll-margin-top:110px; padding:64px 0; position:relative; }
 
-    .page{ scroll-margin-top:110px; }
-
-    /* ---------- Active nav: underline + dot ---------- */
-    .links a[href^="#"]{ position:relative; }
-    .links a[href^="#"]::after{
-      content:"";
-      position:absolute;
-      left:12px;
-      right:12px;
-      bottom:6px;
-      height:2px;
-      border-radius:2px;
-      background:transparent;
-      opacity:.9;
-      transform:scaleX(.6);
-      transform-origin:center;
-      transition:background .15s ease, transform .15s ease;
-    }
-    .links a[href^="#"]::before{
-      content:"";
-      position:absolute;
-      left:50%;
-      bottom:4px;
-      width:6px;
-      height:6px;
-      border-radius:999px;
-      background:transparent;
-      transform:translateX(-50%);
-      transition:background .15s ease;
-    }
-    .links a.active[href^="#"]::after{
-      background:var(--brand);
-      transform:scaleX(1);
-    }
-    .links a.active[href^="#"]::before{
-      background:var(--brand);
-    }
-
-    /* ---------- Sections feel like chapters (subtle dividers) ---------- */
-    .page{
-      position:relative;
-      padding-top:64px;
-      padding-bottom:64px;
-    }
     .page:not(#top)::before{
       content:"";
-      position:absolute;
-      top:0;
-      left:0;
-      right:0;
-      height:1px;
+      position:absolute; top:0; left:0; right:0; height:1px;
       background:linear-gradient(to right, transparent, rgba(11,18,32,.10), transparent);
     }
 
-    /* Chapter header (number + title) */
-    .chapter{
-      display:flex;
-      flex-direction:column;
-      gap:6px;
-      margin:0 0 18px;
+    /* Active Nav */
+    .links a[href^="#"]{ position:relative; }
+    .links a.active::after{
+      content:""; position:absolute; left:12px; right:12px; bottom:6px;
+      height:2px; background:var(--brand); border-radius:2px;
     }
+
+    /* Chapter */
+    .chapter{ margin-bottom:20px; }
     .chapter .num{
-      font-size:12px;
-      letter-spacing:2.4px;
-      font-weight:800;
+      font-size:12px; letter-spacing:2.4px; font-weight:800;
       color:rgba(11,18,32,.45);
-      text-transform:uppercase;
     }
     .chapter h2{
-      margin:0;
-      display:inline-block;
-      padding-bottom:10px;
+      margin:6px 0 0; padding-bottom:10px;
       border-bottom:1px solid rgba(11,18,32,.10);
     }
 
-    /* ---------- Hero refinement (hierarchy + calm) ---------- */
-    .hero h1{
-      max-width:22ch;
-      margin:0 0 14px;
-    }
-    .hero h1 .muted{
-      display:block;
-      margin-top:10px;
-      font-weight:600;
-      color:rgba(95,107,134,.92);
-    }
-    .hero p{
-      max-width:64ch;
-      font-size:18px;
-      line-height:1.6;
-      margin:0;
-    }
-    .ctaRow{
-      display:flex;
-      gap:12px;
-      flex-wrap:wrap;
-      margin-top:18px;
-    }
-    .btn.secondary{
-      background:rgba(255,255,255,.55);
-      box-shadow:none;
-    }
+    /* Hero */
+    .hero h1{ max-width:22ch; margin-bottom:14px; }
+    .hero p{ max-width:64ch; font-size:18px; line-height:1.6; }
 
-    /* ---------- Cards: luftiger & edler ---------- */
+    /* Cards */
     .card{
-      padding:26px;
-      border-radius:20px;
+      padding:26px; border-radius:20px;
       box-shadow:0 14px 34px rgba(11,18,32,.08);
     }
-    .grid3 .card h3{ margin-top:0; }
 
-    /* ---------- Nav: Contact as calm link, language as pill ---------- */
-    .links a.contactLink{ font-weight:650; }
-
-    .links a.langBtn{
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.9);
-      box-shadow:var(--shadow);
-      padding:8px 12px;
-      border-radius:999px;
+    /* Read more */
+    .more{ display:none; margin-top:10px; }
+    .toggle{
+      margin-top:10px; background:none; border:none;
+      color:var(--brand); font-weight:600; cursor:pointer;
     }
 
-    /* ---------- Footer: cleaner close ---------- */
+    /* Form */
+    form{ max-width:520px; }
+    label{ display:block; margin-top:14px; font-weight:600; }
+    input, textarea{
+      width:100%; padding:12px 14px; margin-top:6px;
+      border-radius:12px; border:1px solid var(--line);
+      font-family:inherit; font-size:16px;
+    }
+    textarea{ min-height:120px; resize:vertical; }
+
     .footer{
-      margin-top:44px;
-      padding-top:18px;
+      margin-top:44px; padding-top:18px;
       border-top:1px solid rgba(11,18,32,.10);
-    }
-
-    /* Mobile fine-tuning for chapter spacing */
-    @media (max-width: 600px){
-      .page{ padding-top:46px; padding-bottom:46px; }
-      .card{ padding:22px; }
     }
   </style>
 </head>
@@ -175,133 +90,141 @@
 <body>
 <div class="wrap">
 
-  <header class="nav">
-    <div class="brand">
-      <a href="/flepaco-online/">
-        <img src="/flepaco-online/assets/logo.svg" alt="FLEPACO">
-      </a>
-    </div>
-    <nav class="links">
-      <a href="#top">Start</a>
-      <a href="#leistungen">Leistungen</a>
-      <a href="#ablauf">Ablauf</a>
-      <a href="#kontakt" class="contactLink">Kontakt</a>
-      <a href="/flepaco-online/en/" class="langBtn">EN</a>
-    </nav>
-  </header>
+<header class="nav">
+  <div class="brand">
+    <a href="/flepaco-online/">
+      <img src="/flepaco-online/assets/logo.svg" alt="FLEPACO">
+    </a>
+  </div>
+  <nav class="links">
+    <a href="#top">Start</a>
+    <a href="#leistungen">Leistungen</a>
+    <a href="#ablauf">Ablauf</a>
+    <a href="#kontakt">Kontakt</a>
+    <a href="/flepaco-online/en/" class="langBtn">EN</a>
+  </nav>
+</header>
 
-  <!-- HERO -->
-  <section class="hero page" id="top">
+<!-- HERO -->
+<section id="top" class="hero page">
+  <div class="card">
+    <h1>Flexible Packaging Consulting</h1>
+    <p class="muted">
+      Unabhängige Beratung für fundierte Entscheidungen
+      von der Idee bis zur Serie.
+    </p>
+  </div>
+</section>
+
+<!-- LEISTUNGEN -->
+<section id="leistungen" class="page">
+  <div class="chapter"><div class="num">01</div><h2>Leistungen</h2></div>
+
+  <div class="grid3">
     <div class="card">
-      <h1>
-        Flexible Packaging Consulting
-        <span class="muted">für fundierte Entscheidungen von der Idee bis zur Serie</span>
-      </h1>
-
-      <p class="muted">
-        Ich unterstütze Unternehmen bei der Auswahl, Bewertung und Umsetzung flexibler
-        Verpackungslösungen – unabhängig, faktenbasiert und praxisnah.
-      </p>
-
-      <div class="ctaRow">
-        <a href="#kontakt" class="btn primary">Unverbindliches Erstgespräch</a>
-        <a href="#leistungen" class="btn secondary">Leistungen ansehen</a>
+      <h3>Analyse & Beratung</h3>
+      <p class="muted">Strukturierte Bewertung technischer Optionen.</p>
+      <div class="more">
+        <p class="muted">
+          Marktvergleich, Machbarkeitsanalyse, Risiko- und Kostenbewertung.
+        </p>
       </div>
-    </div>
-
-    <aside class="card">
-      <h3>Kurzprofil</h3>
-      <p class="muted">
-        • Flexible Verpackungen<br>
-        • Material, Barriere, Siegel, Migration<br>
-        • Nachhaltigkeit & Regulierung
-      </p>
-    </aside>
-  </section>
-
-  <!-- LEISTUNGEN -->
-  <section id="leistungen" class="page">
-    <div class="chapter">
-      <div class="num">01</div>
-      <h2>Leistungen</h2>
-    </div>
-
-    <div class="grid3">
-      <div class="card">
-        <h3>Analyse & Beratung</h3>
-        <p class="muted">Strukturierte Bewertung technischer und wirtschaftlicher Optionen.</p>
-      </div>
-      <div class="card">
-        <h3>Material & Spezifikation</h3>
-        <p class="muted">Auslegung von Materialien, Barriere, Siegel, Migration und Nachhaltigkeit.</p>
-      </div>
-      <div class="card">
-        <h3>Projektbegleitung</h3>
-        <p class="muted">Begleitung von der Idee bis zur Serienfreigabe.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ABLAUF -->
-  <section id="ablauf" class="page">
-    <div class="chapter">
-      <div class="num">02</div>
-      <h2>Ablauf</h2>
-    </div>
-
-    <div class="grid3">
-      <div class="card"><h3>1. Erstgespräch</h3><p class="muted">Zieldefinition & Rahmen.</p></div>
-      <div class="card"><h3>2. Empfehlung</h3><p class="muted">Vergleich & Entscheidungsbasis.</p></div>
-      <div class="card"><h3>3. Umsetzung</h3><p class="muted">Tests, Freigaben, Implementierung.</p></div>
-    </div>
-  </section>
-
-  <!-- KONTAKT -->
-  <section id="kontakt" class="page">
-    <div class="chapter">
-      <div class="num">03</div>
-      <h2>Kontakt</h2>
+      <button class="toggle">Mehr anzeigen</button>
     </div>
 
     <div class="card">
-      <p class="muted">
-        Für ein unverbindliches Erstgespräch:<br>
-        <strong><a href="mailto:kontakt@flepaco.com">kontakt@flepaco.com</a></strong>
-      </p>
+      <h3>Material & Spezifikation</h3>
+      <p class="muted">Auslegung von Materialien und Barrieren.</p>
+      <div class="more">
+        <p class="muted">
+          Siegelverhalten, Migration, Recyclingfähigkeit,
+          regulatorische Anforderungen.
+        </p>
+      </div>
+      <button class="toggle">Mehr anzeigen</button>
     </div>
 
-    <div class="footer">
-      © <span id="y"></span> FLEPACO ·
-      <a href="/flepaco-online/impressum.html">Impressum</a> ·
-      <a href="/flepaco-online/datenschutz.html">Datenschutz</a>
+    <div class="card">
+      <h3>Projektbegleitung</h3>
+      <p class="muted">Begleitung bis zur Serienfreigabe.</p>
+      <div class="more">
+        <p class="muted">
+          Lieferantenschnittstelle, Tests, Abnahmen,
+          Industrialisierung.
+        </p>
+      </div>
+      <button class="toggle">Mehr anzeigen</button>
     </div>
-  </section>
+  </div>
+</section>
+
+<!-- ABLAUF -->
+<section id="ablauf" class="page">
+  <div class="chapter"><div class="num">02</div><h2>Ablauf</h2></div>
+  <div class="grid3">
+    <div class="card"><h3>1. Erstgespräch</h3><p class="muted">Ziele & Rahmen.</p></div>
+    <div class="card"><h3>2. Empfehlung</h3><p class="muted">Optionen & Bewertung.</p></div>
+    <div class="card"><h3>3. Umsetzung</h3><p class="muted">Tests & Implementierung.</p></div>
+  </div>
+</section>
+
+<!-- KONTAKT -->
+<section id="kontakt" class="page">
+  <div class="chapter"><div class="num">03</div><h2>Kontakt</h2></div>
+
+  <div class="card">
+    <form>
+      <label>Name
+        <input type="text" placeholder="Ihr Name">
+      </label>
+      <label>E-Mail
+        <input type="email" placeholder="name@unternehmen.com">
+      </label>
+      <label>Nachricht
+        <textarea placeholder="Kurz Ihr Anliegen beschreiben"></textarea>
+      </label>
+      <button type="submit" class="btn primary" style="margin-top:16px;">
+        Anfrage senden
+      </button>
+      <p class="muted" style="margin-top:10px;font-size:14px;">
+        Hinweis: Formular aktuell ohne Backend (Vorbereitung für WordPress).
+      </p>
+    </form>
+  </div>
+
+  <div class="footer">
+    © <span id="y"></span> FLEPACO ·
+    <a href="/flepaco-online/impressum.html">Impressum</a> ·
+    <a href="/flepaco-online/datenschutz.html">Datenschutz</a>
+  </div>
+</section>
 
 </div>
 
 <script>
-  document.getElementById("y").textContent = new Date().getFullYear();
+document.getElementById("y").textContent=new Date().getFullYear();
 
-  const sections = document.querySelectorAll("section[id]");
-  const navLinks = document.querySelectorAll(".links a[href^='#']");
+/* Active nav */
+const sections=document.querySelectorAll("section[id]");
+const links=document.querySelectorAll(".links a[href^='#']");
+new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      links.forEach(l=>l.classList.toggle("active",l.getAttribute("href")==="#"+e.target.id));
+    }
+  });
+},{threshold:.6}).observe(sections[0]);
+sections.forEach(s=>new IntersectionObserver(()=>{},{}));
 
-  const observer = new IntersectionObserver(
-    entries => {
-      entries.forEach(entry => {
-        if(entry.isIntersecting){
-          navLinks.forEach(link => {
-            link.classList.toggle(
-              "active",
-              link.getAttribute("href") === "#" + entry.target.id
-            );
-          });
-        }
-      });
-    },
-    { threshold: 0.6 }
-  );
-
-  sections.forEach(section => observer.observe(section));
+/* Read more */
+document.querySelectorAll(".toggle").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    const more=btn.previousElementSibling;
+    const open=more.style.display==="block";
+    more.style.display=open?"none":"block";
+    btn.textContent=open?"Mehr anzeigen":"Weniger anzeigen";
+  });
+});
 </script>
 </body>
 </html>
