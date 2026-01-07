@@ -232,3 +232,46 @@ p{
     width:100%;
   }
 }
+/* =========================
+   One-Page "Full Section" Layout
+   ========================= */
+
+html{
+  scroll-behavior:smooth;
+}
+
+/* Header bleibt oben sichtbar */
+.nav{
+  position:sticky;
+  top:0;
+  z-index:50;
+
+  /* passt zur Startseite */
+  background:rgba(244,246,251,.86);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  /* kleiner Rahmen, damit er sich abhebt */
+  border-bottom:1px solid var(--line);
+  margin:0 0 12px;
+  padding:12px 0;
+}
+
+/* Jede Sektion fühlt sich wie "eine Seite" an */
+.page{
+  min-height:calc(100vh - 92px); /* 92px = grob Headerhöhe */
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:56px 0;
+}
+
+/* Damit Sprungmarken nicht unter dem sticky Header landen */
+.page{
+  scroll-margin-top:100px;
+}
+
+/* Optional: etwas mehr Ruhe zwischen Cards in einer Sektion */
+.page .card{
+  margin-top:10px;
+}
