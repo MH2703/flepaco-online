@@ -8,26 +8,36 @@
   <meta name="description" content="Unabhängige Beratung für flexible Verpackungen – Material, Spezifikation und Projektbegleitung.">
   <meta name="robots" content="index,follow">
 
+  <!-- Favicon -->
   <link rel="icon" href="/flepaco-online/assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="/flepaco-online/assets/style.css?v=4">
 
-  <!-- Onepage Enhancements -->
+  <!-- Styles -->
+  <link rel="stylesheet" href="/flepaco-online/assets/style.css?v=5">
+
+  <!-- Onepage: Scroll Snap (Desktop only) + Active Nav -->
   <style>
     html{
       scroll-behavior:smooth;
     }
 
-    body{
-      scroll-snap-type:y mandatory;
-      overflow-y:scroll;
+    /* Scroll Snap nur Desktop */
+    @media (min-width: 900px){
+      body{
+        scroll-snap-type:y mandatory;
+        overflow-y:scroll;
+      }
+
+      .page{
+        scroll-snap-align:start;
+      }
     }
 
+    /* Abstand wegen Sticky Header */
     .page{
-      scroll-snap-align:start;
       scroll-margin-top:110px;
     }
 
-    /* Active navigation state */
+    /* Aktiver Menüpunkt */
     .links a.active{
       background:rgba(20,184,166,.18);
       color:#06201c;
