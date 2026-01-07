@@ -35,7 +35,6 @@
       padding:48px 32px;
     }
 
-    /* Symmetrie-Fix: Logo + Text als zentriertes Stack */
     .stack{
       display:flex;
       flex-direction:column;
@@ -47,8 +46,8 @@
       display:flex;
       justify-content:center;
       align-items:center;
-      line-height:0; /* verhindert vertikales „Versetzen“ */
-      color:var(--text); /* steuert SVG (currentColor) */
+      line-height:0;
+      color:var(--text);
     }
 
     .logo img{
@@ -91,8 +90,14 @@
 
     .btn:hover{transform:translateY(-1px)}
 
+    .note{
+      margin-top:14px;
+      font-size:13px;
+      color:var(--muted);
+    }
+
     footer{
-      margin-top:36px;
+      margin-top:28px;
       font-size:13px;
       color:var(--muted);
     }
@@ -109,43 +114,14 @@
       h1{font-size:20px}
     }
   </style>
-
-  <script>
-    // Auto-Sprachauswahl: nur beim ersten Besuch und nicht, wenn ?lang=... gesetzt ist
-    (function () {
-      try {
-        const params = new URLSearchParams(location.search);
-        if (params.has("lang")) return; // falls du später manuell steuern willst
-
-        // Nur umleiten, wenn wir wirklich auf der Startseite sind (ohne /de/ oder /en/)
-        const path = location.pathname.replace(/\/+$/, "");
-        const onRoot = path.endsWith("/flepaco-online") || path.endsWith("/flepaco-online/index.html");
-
-        if (!onRoot) return;
-
-        // Nur einmal automatisch (User kann danach bewusst wählen)
-        if (localStorage.getItem("flepaco_lang_selected") === "1") return;
-
-        const lang = (navigator.language || navigator.userLanguage || "en").toLowerCase();
-
-        if (lang.startsWith("de")) {
-          location.replace("/flepaco-online/de/");
-        } else {
-          location.replace("/flepaco-online/en/");
-        }
-      } catch (e) {}
-    })();
-  </script>
 </head>
 
 <body>
-
   <main>
     <div class="stack">
       <div class="logo" aria-label="FLEPACO">
         <img src="/flepaco-online/assets/logo.svg" alt="FLEPACO">
       </div>
-
       <h1>Flexible Packaging Consulting</h1>
     </div>
 
@@ -154,6 +130,10 @@
          onclick="localStorage.setItem('flepaco_lang_selected','1')">Deutsch</a>
       <a href="/flepaco-online/en/" class="btn"
          onclick="localStorage.setItem('flepaco_lang_selected','1')">English</a>
+    </div>
+
+    <div class="note" id="autoNote" style="display:none">
+      Automatische Weiterleitung… (du kannst auch oben eine Sprache wählen)
     </div>
 
     <footer>
@@ -165,7 +145,36 @@
 
   <script>
     document.getElementById("y").textContent = new Date().getFullYear();
-  </script>
 
+    (function () {
+      try {
+        const params = new URLSearchParams(location.search);
+
+        // Wenn ?noauto=1 gesetzt ist -> niemals automatisch weiterleiten (praktisch zum Testen)
+        if (params.get("noauto") === "1") return;
+
+        // Nur auf der Root-Seite ausführen
+        const path = location.pathname.replace(/\/+$/, "");
+        const onRoot = path === "/flepaco-online" || path === "/flepaco-online/index.html";
+        if (!onRoot) return;
+
+        // Wenn User schon einmal bewusst gewählt hat -> nicht automatisch weiterleiten
+        if (localStorage.getItem("flepaco_lang_selected") === "1") return;
+
+        // Hinweis einblenden
+        document.getElementById("autoNote").style.display = "block";
+
+        const lang = (navigator.language || "en").toLowerCase();
+        const target = lang.startsWith("de")
+          ? "/flepaco-online/de/"
+          : "/flepaco-online/en/";
+
+        // Verzögerung, damit du die Startseite mit Logo siehst
+        setTimeout(() => {
+          location.replace(target);
+        }, 1200); // 1.2 Sekunden
+      } catch (e) {}
+    })();
+  </script>
 </body>
 </html>
