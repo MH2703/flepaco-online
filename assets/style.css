@@ -117,3 +117,15 @@ h2{
   .grid3{grid-template-columns:1fr}
   h1{font-size:32px}
 }
+/* Logo final */
+.brand{
+  display:flex;
+  align-items:center;
+  color:#eaf0ff;
+}
+
+.brand img{
+  height:34px;
+  width:auto;
+  display:block;
+}
