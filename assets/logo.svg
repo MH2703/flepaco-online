@@ -1,31 +1,39 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 80">
-  <text x="0" y="58"
-        font-family="Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif"
-        font-size="56" font-weight="700" letter-spacing="4"
-        fill="#5eead4">F</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 140" role="img" aria-label="FLEPACO – Flexible Packaging Consulting">
+  <style>
+    .word {
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      font-size: 72px;
+      font-weight: 800;
+      letter-spacing: 3px;
+    }
+    .tag {
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      font-size: 21px;
+      font-weight: 600;
+      letter-spacing: 2.6px; /* sorgt für gleiche Breite */
+    }
+  </style>
 
-  <text x="36" y="58"
-        font-family="Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif"
-        font-size="56" font-weight="700" letter-spacing="4"
-        fill="#eaf0ff">LE</text>
+  <!-- Wortmarke -->
+  <g transform="translate(280,78)">
+    <text class="word" text-anchor="middle" dominant-baseline="middle">
+      <tspan fill="#14b8a6">F</tspan>
+      <tspan fill="#0b1220">LE</tspan>
+      <tspan fill="#14b8a6">P</tspan>
+      <tspan fill="#0b1220">A</tspan>
+      <tspan fill="#14b8a6">C</tspan>
+      <tspan fill="#0b1220">O</tspan>
+    </text>
+  </g>
 
-  <text x="120" y="58"
-        font-family="Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif"
-        font-size="56" font-weight="700" letter-spacing="4"
-        fill="#5eead4">P</text>
-
-  <text x="160" y="58"
-        font-family="Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif"
-        font-size="56" font-weight="700" letter-spacing="4"
-        fill="#eaf0ff">A</text>
-
-  <text x="200" y="58"
-        font-family="Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif"
-        font-size="56" font-weight="700" letter-spacing="4"
-        fill="#5eead4">C</text>
-
-  <text x="240" y="58"
-        font-family="Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif"
-        font-size="56" font-weight="700" letter-spacing="4"
-        fill="#eaf0ff">O</text>
+  <!-- Unterzeile exakt auf Wortmarkenbreite abgestimmt -->
+  <text
+    x="280"
+    y="125"
+    class="tag"
+    text-anchor="middle"
+    fill="#0b1220"
+  >
+    FLEXIBLE PACKAGING CONSULTING
+  </text>
 </svg>
