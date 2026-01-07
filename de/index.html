@@ -8,39 +8,86 @@
   <meta name="description" content="Unabhängige Beratung für flexible Verpackungen – Material, Spezifikation und Projektbegleitung.">
   <meta name="robots" content="index,follow">
 
-  <!-- Favicon -->
   <link rel="icon" href="/flepaco-online/assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/flepaco-online/assets/style.css?v=6">
 
-  <!-- Styles -->
-  <link rel="stylesheet" href="/flepaco-online/assets/style.css?v=5">
-
-  <!-- Onepage: Scroll Snap (Desktop only) + Active Nav -->
   <style>
-    html{
-      scroll-behavior:smooth;
-    }
+    html{ scroll-behavior:smooth; }
 
-    /* Scroll Snap nur Desktop */
+    /* ===== Scroll Snap: nur Desktop & weich ===== */
     @media (min-width: 900px){
       body{
-        scroll-snap-type:y mandatory;
+        scroll-snap-type:y proximity; /* weicher als mandatory */
         overflow-y:scroll;
       }
-
       .page{
         scroll-snap-align:start;
+        scroll-snap-stop:normal;
       }
+      /* Kontakt: kein Snap (für längere Inhalte/Forms angenehmer) */
+      #kontakt{ scroll-snap-align:none; }
     }
 
-    /* Abstand wegen Sticky Header */
-    .page{
-      scroll-margin-top:110px;
+    .page{ scroll-margin-top:110px; }
+
+    /* ===== Edle aktive Navigation: Underline + Punkt ===== */
+    .links a[href^="#"]{
+      position:relative;
+    }
+    .links a[href^="#"]::after{
+      content:"";
+      position:absolute;
+      left:12px;
+      right:12px;
+      bottom:6px;
+      height:2px;
+      border-radius:2px;
+      background:transparent;
+      opacity:.9;
+      transform:scaleX(.6);
+      transform-origin:center;
+      transition:background .15s ease, transform .15s ease;
+    }
+    .links a[href^="#"]::before{
+      content:"";
+      position:absolute;
+      left:50%;
+      bottom:4px;
+      width:6px;
+      height:6px;
+      border-radius:999px;
+      background:transparent;
+      transform:translateX(-50%);
+      transition:background .15s ease;
+    }
+    .links a.active[href^="#"]::after{
+      background:var(--brand);
+      transform:scaleX(1);
+    }
+    .links a.active[href^="#"]::before{
+      background:var(--brand);
     }
 
-    /* Aktiver Menüpunkt */
-    .links a.active{
-      background:rgba(20,184,166,.18);
-      color:#06201c;
+    /* ===== Hero Feinschliff ===== */
+    .hero h1{
+      max-width:22ch;
+      margin-bottom:12px;
+    }
+    .hero p{
+      max-width:62ch;
+      font-size:18px;
+      line-height:1.55;
+    }
+    .ctaRow{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top:14px;
+    }
+    /* Secondary CTA: ruhiger Link-Button */
+    .btn.secondary{
+      background:rgba(255,255,255,.55);
+      box-shadow:none;
     }
   </style>
 </head>
@@ -48,7 +95,7 @@
 <body>
 <div class="wrap">
 
-  <!-- HEADER -->
+  <!-- HEADER (mit "Start") -->
   <header class="nav">
     <div class="brand">
       <a href="/flepaco-online/">
@@ -56,6 +103,7 @@
       </a>
     </div>
     <nav class="links">
+      <a href="#top">Start</a>
       <a href="#leistungen">Leistungen</a>
       <a href="#ablauf">Ablauf</a>
       <a href="#kontakt" class="btn">Kontakt</a>
@@ -76,7 +124,10 @@
         Verpackungslösungen – unabhängig, faktenbasiert und praxisnah.
       </p>
 
-      <a href="#kontakt" class="btn primary">Unverbindliches Erstgespräch</a>
+      <div class="ctaRow">
+        <a href="#kontakt" class="btn primary">Unverbindliches Erstgespräch</a>
+        <a href="#leistungen" class="btn secondary">Leistungen ansehen</a>
+      </div>
     </div>
 
     <aside class="card">
@@ -120,7 +171,7 @@
     </div>
   </section>
 
-  <!-- KONTAKT -->
+  <!-- KONTAKT (ohne Snap auf Desktop) -->
   <section id="kontakt" class="page">
     <h2>Kontakt</h2>
 
