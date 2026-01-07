@@ -5,132 +5,127 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>FLEPACO – Flexible Packaging Consulting</title>
-  <meta name="description" content="FLEPACO – Independent consulting for flexible packaging. Materials, specifications and project support.">
+  <meta name="description" content="Independent consulting for flexible packaging – materials, specifications and project support.">
   <meta name="robots" content="index,follow">
 
-  <!-- Favicon -->
   <link rel="icon" href="/flepaco-online/assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/flepaco-online/assets/style.css?v=4">
 
-  <!-- Styles -->
-  <link rel="stylesheet" href="/flepaco-online/assets/style.css">
+  <style>
+    html{ scroll-behavior:smooth; }
+    body{ scroll-snap-type:y mandatory; overflow-y:scroll; }
+    .page{ scroll-snap-align:start; scroll-margin-top:110px; }
+    .links a.active{
+      background:rgba(20,184,166,.18);
+      color:#06201c;
+    }
+  </style>
 </head>
 
 <body>
-  <div class="wrap">
+<div class="wrap">
 
-    <header class="nav">
-      <div class="brand">
-        <a href="/flepaco-online/" aria-label="Home">
-          <img src="/flepaco-online/assets/logo.svg" alt="FLEPACO">
-        </a>
-      </div>
-      <nav class="links">
-        <a href="#services">Services</a>
-        <a href="#process">Process</a>
-        <a href="#contact" class="btn">Contact</a>
-        <a href="/flepaco-online/de/" class="btn">DE</a>
-      </nav>
-    </header>
+  <header class="nav">
+    <div class="brand">
+      <a href="/flepaco-online/">
+        <img src="/flepaco-online/assets/logo.svg" alt="FLEPACO">
+      </a>
+    </div>
+    <nav class="links">
+      <a href="#services">Services</a>
+      <a href="#process">Process</a>
+      <a href="#contact" class="btn">Contact</a>
+      <a href="/flepaco-online/de/" class="btn">DE</a>
+    </nav>
+  </header>
 
-    <section class="hero">
-      <div class="card">
-        <h1>
-          Flexible Packaging Consulting<br>
-          <span style="color:var(--brand)">enabling confident decisions from concept to production</span>
-        </h1>
+  <section class="hero page" id="top">
+    <div class="card">
+      <h1>
+        Flexible Packaging Consulting<br>
+        <span class="muted">confident decisions from concept to production</span>
+      </h1>
 
-        <p class="muted" style="font-size:18px;line-height:1.5;margin:0 0 14px">
-          I support companies in selecting, evaluating and implementing flexible packaging solutions –
-          from early concepts to stable production. The focus is on technically sound decisions,
-          transparent trade-offs and practical implementation, independent of suppliers.
-        </p>
+      <p class="muted">
+        I support companies in evaluating and implementing flexible packaging solutions –
+        independent, structured and practical.
+      </p>
 
-        <a href="#contact" class="btn primary">Request an initial call</a>
-        <a href="#services" class="btn" style="margin-left:8px">View services</a>
-      </div>
+      <a href="#contact" class="btn primary">Request an initial call</a>
+    </div>
 
-      <aside class="card">
-        <h2>Profile</h2>
-        <p class="muted" style="margin:0">
-          • Focus: Flexible packaging<br>
-          • Expertise: Materials, barrier, sealing, migration, sustainability<br>
-          • Role: Independent consulting & project support<br>
-          • Approach: Structured, fact-based, practical
-        </p>
-      </aside>
-    </section>
+    <aside class="card">
+      <h3>Profile</h3>
+      <p class="muted">
+        • Flexible packaging<br>
+        • Materials, barrier, sealing, migration<br>
+        • Sustainability & regulation
+      </p>
+    </aside>
+  </section>
 
-    <section style="padding:18px 0">
-      <h2>Who is FLEPACO for?</h2>
-      <div class="card">
-        <p class="muted" style="margin:0">
-          My consulting services support organizations facing <b>technical or strategic decisions</b>
-          related to flexible packaging – regardless of company size or industry.
-        </p>
+  <section id="services" class="page">
+    <h2>Services</h2>
 
-        <p class="muted" style="margin:12px 0 0">
-          <b>Typical clients include:</b><br><br>
-          • Brand owners & manufacturers developing or optimizing packaging solutions<br>
-          • Industrial and consumer goods companies assessing materials, costs or sustainability<br>
-          • Small and medium-sized enterprises without in-house packaging specialists<br>
-          • Start-ups & scale-ups industrializing or scaling packaging concepts<br>
-          • Procurement, R&D and quality teams seeking independent technical assessment
-        </p>
+    <div class="grid3">
+      <div class="card"><h3>Analysis & Consulting</h3><p class="muted">Structured evaluation of options.</p></div>
+      <div class="card"><h3>Materials & Specifications</h3><p class="muted">Material design and specification.</p></div>
+      <div class="card"><h3>Project Support</h3><p class="muted">Support from concept to approval.</p></div>
+    </div>
+  </section>
 
-        <p class="muted" style="margin:12px 0 0">
-          Engagements are also well suited for <b>time-critical questions</b>
-          or as <b>temporary external expertise</b>.
-        </p>
-      </div>
-    </section>
+  <section id="process" class="page">
+    <h2>Process</h2>
 
-    <section id="services" style="padding:18px 0">
-      <h2>Services</h2>
-      <div class="grid3">
-        <div class="card">
-          <b>Analysis & Consulting</b>
-          <p class="muted">Structured evaluation of options considering requirements, risks, costs and regulatory aspects.</p>
-        </div>
-        <div class="card">
-          <b>Materials & Specifications</b>
-          <p class="muted">Material selection, structure design and specifications – covering barrier performance, sealing behavior, migration, machinability and sustainability.</p>
-        </div>
-        <div class="card">
-          <b>Project Support</b>
-          <p class="muted">Support from concept phase to series approval – acting as a technical interface between teams, suppliers and testing partners.</p>
-        </div>
-      </div>
-    </section>
+    <div class="grid3">
+      <div class="card"><h3>1. Initial discussion</h3><p class="muted">Objectives & scope.</p></div>
+      <div class="card"><h3>2. Recommendation</h3><p class="muted">Options & trade-offs.</p></div>
+      <div class="card"><h3>3. Implementation</h3><p class="muted">Testing & rollout.</p></div>
+    </div>
+  </section>
 
-    <section id="process" style="padding:18px 0">
-      <h2>Process</h2>
-      <div class="grid3">
-        <div class="card"><b>1) Initial discussion</b><p class="muted">Clarify objectives, constraints and current status, then define scope and next steps.</p></div>
-        <div class="card"><b>2) Recommendation</b><p class="muted">Compare relevant options with clear advantages and limitations – transparent decision-making.</p></div>
-        <div class="card"><b>3) Implementation</b><p class="muted">Support during testing, approvals and implementation – focus on stable processes and reproducible results.</p></div>
-      </div>
-    </section>
+  <section id="contact" class="page">
+    <h2>Contact</h2>
 
-    <section id="contact" style="padding:18px 0">
-      <h2>Contact</h2>
-      <div class="card">
-        <p class="muted" style="margin:0">
-          Interested in discussing a specific challenge or upcoming project?<br>
-          <b><a href="mailto:kontakt@flepaco.com">kontakt@flepaco.com</a></b>
-        </p>
-      </div>
+    <div class="card">
+      <p class="muted">
+        Interested in discussing a project?<br>
+        <strong><a href="mailto:kontakt@flepaco.com">kontakt@flepaco.com</a></strong>
+      </p>
+    </div>
 
-      <div class="footer">
-        © <span id="y"></span> FLEPACO ·
-        <a href="/flepaco-online/impressum.html">Imprint</a> ·
-        <a href="/flepaco-online/datenschutz.html">Privacy</a>
-      </div>
-    </section>
+    <div class="footer">
+      © <span id="y"></span> FLEPACO ·
+      <a href="/flepaco-online/impressum.html">Imprint</a> ·
+      <a href="/flepaco-online/datenschutz.html">Privacy</a>
+    </div>
+  </section>
 
-  </div>
+</div>
 
-  <script>
-    document.getElementById("y").textContent = new Date().getFullYear();
-  </script>
+<script>
+  document.getElementById("y").textContent = new Date().getFullYear();
+
+  const sections = document.querySelectorAll("section[id]");
+  const navLinks = document.querySelectorAll(".links a[href^='#']");
+
+  const observer = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          navLinks.forEach(link => {
+            link.classList.toggle(
+              "active",
+              link.getAttribute("href") === "#" + entry.target.id
+            );
+          });
+        }
+      });
+    },
+    { threshold: 0.6 }
+  );
+
+  sections.forEach(section => observer.observe(section));
+</script>
 </body>
 </html>
