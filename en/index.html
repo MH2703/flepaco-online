@@ -1,80 +1,124 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>FLEPACO – Services</title>
-  <meta name="description" content="FLEPACO: Flexible Packaging Consulting – services, process, contact." />
+  <meta name="description" content="FLEPACO – Flexible Packaging Consulting. Analysis, materials & project support.">
   <link rel="stylesheet" href="/flepaco-online/assets/style.css">
 </head>
 <body>
-  <div class="wrap">
-    <header class="nav">
-      <div class="brand">
-        <a href="/flepaco-online/">
-          <img src="/flepaco-online/assets/logo.svg" alt="FLEPACO">
-        </a>
-      </div>
-      <nav class="links">
-        <a href="#services">Services</a>
-        <a href="#process">Process</a>
-        <a href="#contact" class="btn">Contact</a>
-        <a href="/flepaco-online/de/" class="btn">DE</a>
-      </nav>
-    </header>
 
-    <section class="hero">
+<div class="wrap">
+  <header class="nav">
+    <div class="brand">
+      <a href="/flepaco-online/" aria-label="Home">
+        <img src="/flepaco-online/assets/logo.svg" alt="FLEPACO">
+      </a>
+    </div>
+
+    <nav class="links">
+      <a href="#services">Services</a>
+      <a href="#process">Process</a>
+      <a href="#contact" class="btn">Contact</a>
+      <a href="/flepaco-online/de/" class="btn">DE</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="card">
+      <h1>
+        Flexible Packaging Consulting<br>
+        <span style="color:var(--brand)">to support better decisions</span>
+      </h1>
+
+      <p class="muted" style="font-size:18px;line-height:1.5">
+        Independent support for material selection, specifications and implementation
+        of flexible packaging solutions – structured, practical and solution-oriented.
+      </p>
+
+      <a href="#contact" class="btn primary">Request an initial call</a>
+      <a href="#services" class="btn" style="margin-left:8px">View services</a>
+    </div>
+
+    <aside class="card">
+      <h2>Profile</h2>
+      <p class="muted">
+        • Focus: Flexible packaging<br>
+        • Location: Remote / Europe<br>
+        • Response time: 24–48h
+      </p>
+    </aside>
+  </section>
+
+  <section id="services" style="padding:18px 0">
+    <h2>Services</h2>
+    <div class="grid3">
       <div class="card">
-        <h1>Flexible Packaging Consulting<br><span style="color:var(--brand)">to support better decisions</span></h1>
-        <p class="muted" style="font-size:18px;line-height:1.5;margin:0 0 14px">
-          Placeholder: 1–2 sentences on what you do and for whom.
+        <b>Analysis & Consulting</b>
+        <p class="muted">
+          Evaluation of options, requirements, risks and cost implications.
         </p>
-        <a class="btn primary" href="#contact">Request a call</a>
-        <a class="btn" href="#services" style="margin-left:8px">View services</a>
       </div>
-
-      <aside class="card">
-        <h2>Profile</h2>
-        <p class="muted" style="margin:0">
-          • Focus: flexible packaging<br/>
-          • Location: … / remote<br/>
-          • Response time: 24–48h
-        </p>
-      </aside>
-    </section>
-
-    <section id="services" style="padding:18px 0">
-      <h2>Services</h2>
-      <div class="grid3">
-        <div class="card"><b>Analysis & consulting</b><p class="muted">Evaluate options, requirements, risks, and costs.</p></div>
-        <div class="card"><b>Materials & specifications</b><p class="muted">Structure, barrier, sealing, migration, sustainability.</p></div>
-        <div class="card"><b>Project support</b><p class="muted">Suppliers, testing, approvals, ramp-up, troubleshooting.</p></div>
-      </div>
-    </section>
-
-    <section id="process" style="padding:18px 0">
-      <h2>Process</h2>
-      <div class="grid3">
-        <div class="card"><b>1) Intro call</b><p class="muted">Clarify goals, assess status, define next steps.</p></div>
-        <div class="card"><b>2) Recommendation</b><p class="muted">Options & a clear recommendation with trade-offs.</p></div>
-        <div class="card"><b>3) Delivery</b><p class="muted">Support through stable production.</p></div>
-      </div>
-    </section>
-
-    <section id="contact" style="padding:18px 0">
-      <h2>Contact</h2>
       <div class="card">
-        <p class="muted" style="margin:0">
-          Email: <a href="mailto:kontakt@flepaco.com">kontakt@flepaco.com</a><br/>
-          Phone: <a href="tel:+49XXXXXXXXX">+49 …</a>
+        <b>Materials & Specifications</b>
+        <p class="muted">
+          Structure, barrier, sealing, migration and sustainability aspects.
         </p>
       </div>
-
-      <div class="footer">
-        © <span id="y"></span> FLEPACO · <a href="/flepaco-online/impressum.html">Imprint</a> · <a href="/flepaco-online/datenschutz.html">Privacy</a>
+      <div class="card">
+        <b>Project Support</b>
+        <p class="muted">
+          Suppliers, testing, approvals, ramp-up and troubleshooting.
+        </p>
       </div>
-    </section>
-  </div>
-  <script>document.getElementById("y").textContent=new Date().getFullYear();</script>
+    </div>
+  </section>
+
+  <section id="process" style="padding:18px 0">
+    <h2>Process</h2>
+    <div class="grid3">
+      <div class="card">
+        <b>1) Initial discussion</b>
+        <p class="muted">
+          Clarifying objectives, assessing the current situation and defining next steps.
+        </p>
+      </div>
+      <div class="card">
+        <b>2) Recommendation</b>
+        <p class="muted">
+          Clear recommendations with transparent trade-offs.
+        </p>
+      </div>
+      <div class="card">
+        <b>3) Implementation</b>
+        <p class="muted">
+          Support through stable production and series launch.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" style="padding:18px 0">
+    <h2>Contact</h2>
+    <div class="card">
+      <p class="muted">
+        Email: <a href="mailto:kontakt@flepaco.com">kontakt@flepaco.com</a><br>
+        Phone: +49 …
+      </p>
+    </div>
+
+    <footer class="footer">
+      © <span id="y"></span> FLEPACO ·
+      <a href="/flepaco-online/impressum.html">Imprint</a> ·
+      <a href="/flepaco-online/datenschutz.html">Privacy</a>
+    </footer>
+  </section>
+</div>
+
+<script>
+  document.getElementById("y").textContent = new Date().getFullYear();
+</script>
+
 </body>
 </html>
