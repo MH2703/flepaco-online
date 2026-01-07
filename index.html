@@ -3,168 +3,43 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <title>FLEPACO – Flexible Packaging Consulting</title>
   <meta name="description" content="FLEPACO – Flexible Packaging Consulting.">
   <meta name="robots" content="index,follow">
 
-  <style>
-    :root{
-      --bg:#f4f6fb;
-      --text:#0b1220;
-      --muted:#5f6b86;
-      --line:rgba(11,18,32,.12);
-      --brand:#14b8a6;
-      --shadow:0 10px 28px rgba(11,18,32,.08);
-    }
-    *{box-sizing:border-box}
-
-    body{
-      margin:0;
-      font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
-      background:var(--bg);
-      color:var(--text);
-      min-height:100vh;
-      display:flex;
-      flex-direction:column;
-      padding:24px;
-    }
-
-    main{
-      flex:1;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-    }
-
-    .content{
-      width:100%;
-      max-width:760px;
-      padding:48px 32px;
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      gap:26px;
-    }
-
-    .logo{
-      width:min(560px, 100%);
-      line-height:0;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-    }
-
-    .logo img{
-      width:100%;
-      height:auto;
-      display:block;
-    }
-
-    .lang{
-      display:flex;
-      justify-content:center;
-      gap:14px;
-      flex-wrap:wrap;
-    }
-
-    .chip{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding:12px 18px;
-      border-radius:999px;
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.85);
-      box-shadow:var(--shadow);
-      text-decoration:none;
-      color:var(--text);
-      font-weight:600;
-      transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    .chip:hover{
-      transform:translateY(-1px);
-      box-shadow:0 14px 36px rgba(11,18,32,.12);
-      background:rgba(255,255,255,.95);
-    }
-
-    .chip.primary{
-      border-color:transparent;
-      background:linear-gradient(180deg, rgba(20,184,166,.95), rgba(20,184,166,.78));
-      color:#06201c;
-      box-shadow:0 14px 36px rgba(20,184,166,.25);
-      font-weight:700;
-    }
-
-    footer{
-      width:100%;
-      max-width:760px;
-      margin:0 auto;
-      padding:14px 8px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      flex-wrap:wrap;
-      gap:10px;
-      font-size:13px;
-      color:var(--muted);
-      line-height:1;
-    }
-
-    footer a, footer span{
-      display:inline-flex;
-      align-items:center;
-      line-height:1;
-    }
-
-    footer a{
-      color:inherit;
-      text-decoration:none;
-      padding:6px 10px;
-      border-radius:10px;
-    }
-
-    footer a:hover{
-      background:rgba(255,255,255,.85);
-    }
-
-    .sep{opacity:.65}
-
-    @media(max-width:600px){
-      body{padding:18px}
-      .content{padding:36px 14px}
-      .chip{width:100%; max-width:280px}
-    }
-  </style>
+  <!-- FAVICON -->
+  <link rel="icon" href="/flepaco-online/assets/favicon.svg" type="image/svg+xml">
 </head>
 
 <body>
+  <main style="min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:#f4f6fb;padding:24px">
 
-  <main>
-    <div class="content">
-      <div class="logo">
-        <img src="/flepaco-online/assets/logo-lockup.svg" alt="FLEPACO – Flexible Packaging Consulting">
-      </div>
+    <img src="/flepaco-online/assets/logo-lockup.svg"
+         alt="FLEPACO – Flexible Packaging Consulting"
+         style="max-width:560px;width:100%;height:auto;margin-bottom:32px">
 
-      <div class="lang" aria-label="Language selection">
-        <a class="chip primary" href="/flepaco-online/de/">Deutsch</a>
-        <a class="chip" href="/flepaco-online/en/">English</a>
-      </div>
+    <div style="display:flex;gap:16px;flex-wrap:wrap;justify-content:center">
+      <a href="/flepaco-online/de/"
+         style="padding:12px 20px;border-radius:999px;background:#14b8a6;color:#06201c;text-decoration:none;font-weight:600">
+        Deutsch
+      </a>
+      <a href="/flepaco-online/en/"
+         style="padding:12px 20px;border-radius:999px;border:1px solid #ccc;color:#0b1220;text-decoration:none;font-weight:600">
+        English
+      </a>
     </div>
-  </main>
 
-  <footer>
-    <span>© <span id="y"></span> FLEPACO</span>
-    <span class="sep">·</span>
-    <a href="/flepaco-online/impressum.html">Impressum</a>
-    <span class="sep">·</span>
-    <a href="/flepaco-online/datenschutz.html">Datenschutz</a>
-  </footer>
+    <footer style="position:absolute;bottom:16px;font-size:13px;color:#5f6b86">
+      © <span id="y"></span> FLEPACO ·
+      <a href="/flepaco-online/impressum.html">Impressum</a> ·
+      <a href="/flepaco-online/datenschutz.html">Datenschutz</a>
+    </footer>
+
+  </main>
 
   <script>
     document.getElementById("y").textContent = new Date().getFullYear();
   </script>
-
 </body>
 </html>
