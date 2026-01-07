@@ -9,31 +9,28 @@
   <meta name="robots" content="index,follow">
 
   <link rel="icon" href="/flepaco-online/assets/favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="/flepaco-online/assets/style.css?v=6">
+  <link rel="stylesheet" href="/flepaco-online/assets/style.css?v=7">
 
   <style>
     html{ scroll-behavior:smooth; }
 
-    /* ===== Scroll Snap: nur Desktop & weich ===== */
+    /* ===== Scroll Snap: Desktop only & soft ===== */
     @media (min-width: 900px){
       body{
-        scroll-snap-type:y proximity; /* weicher als mandatory */
+        scroll-snap-type:y proximity;
         overflow-y:scroll;
       }
       .page{
         scroll-snap-align:start;
         scroll-snap-stop:normal;
       }
-      /* Kontakt: kein Snap (für längere Inhalte/Forms angenehmer) */
       #kontakt{ scroll-snap-align:none; }
     }
 
     .page{ scroll-margin-top:110px; }
 
-    /* ===== Edle aktive Navigation: Underline + Punkt ===== */
-    .links a[href^="#"]{
-      position:relative;
-    }
+    /* ===== Premium active nav: underline + dot ===== */
+    .links a[href^="#"]{ position:relative; }
     .links a[href^="#"]::after{
       content:"";
       position:absolute;
@@ -68,7 +65,33 @@
       background:var(--brand);
     }
 
-    /* ===== Hero Feinschliff ===== */
+    /* ===== Make sections feel like pages (subtle separators) ===== */
+    .page{
+      position:relative;
+      padding-top:56px;
+      padding-bottom:56px;
+    }
+
+    /* soft top divider for all except first */
+    .page:not(#top)::before{
+      content:"";
+      position:absolute;
+      top:0;
+      left:0;
+      right:0;
+      height:1px;
+      background:linear-gradient(to right, transparent, rgba(11,18,32,.10), transparent);
+    }
+
+    /* a little “anchor” label effect (very subtle) */
+    .page > h2{
+      display:inline-block;
+      padding-bottom:10px;
+      margin-bottom:18px;
+      border-bottom:1px solid rgba(11,18,32,.10);
+    }
+
+    /* ===== Hero refinement ===== */
     .hero h1{
       max-width:22ch;
       margin-bottom:12px;
@@ -77,17 +100,31 @@
       max-width:62ch;
       font-size:18px;
       line-height:1.55;
+      margin-bottom:0;
     }
     .ctaRow{
       display:flex;
       gap:12px;
       flex-wrap:wrap;
-      margin-top:14px;
+      margin-top:16px;
     }
-    /* Secondary CTA: ruhiger Link-Button */
     .btn.secondary{
       background:rgba(255,255,255,.55);
       box-shadow:none;
+    }
+
+    /* ===== Nav: Contact as calm link (not a button) ===== */
+    .links a.contactLink{
+      font-weight:650;
+    }
+
+    /* keep language switch as button (still ok) */
+    .links a.langBtn{
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.9);
+      box-shadow:var(--shadow);
+      padding:8px 12px;
+      border-radius:999px;
     }
   </style>
 </head>
@@ -95,7 +132,6 @@
 <body>
 <div class="wrap">
 
-  <!-- HEADER (mit "Start") -->
   <header class="nav">
     <div class="brand">
       <a href="/flepaco-online/">
@@ -106,8 +142,8 @@
       <a href="#top">Start</a>
       <a href="#leistungen">Leistungen</a>
       <a href="#ablauf">Ablauf</a>
-      <a href="#kontakt" class="btn">Kontakt</a>
-      <a href="/flepaco-online/en/" class="btn">EN</a>
+      <a href="#kontakt" class="contactLink">Kontakt</a>
+      <a href="/flepaco-online/en/" class="langBtn">EN</a>
     </nav>
   </header>
 
@@ -171,7 +207,7 @@
     </div>
   </section>
 
-  <!-- KONTAKT (ohne Snap auf Desktop) -->
+  <!-- KONTAKT -->
   <section id="kontakt" class="page">
     <h2>Kontakt</h2>
 
@@ -194,7 +230,6 @@
 <script>
   document.getElementById("y").textContent = new Date().getFullYear();
 
-  /* Active Navigation */
   const sections = document.querySelectorAll("section[id]");
   const navLinks = document.querySelectorAll(".links a[href^='#']");
 
