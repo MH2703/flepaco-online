@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="FPC – FLEPACO">
+  <style>
+    .mono {
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      font-size: 64px;
+      font-weight: 800;
+      letter-spacing: 4px;
+    }
+  </style>
+
+  <!-- Hintergrund transparent -->
+  <!-- Monogramm exakt zentriert -->
+  <text
+    x="60"
+    y="68"
+    class="mono"
+    text-anchor="middle"
+    dominant-baseline="middle"
+  >
+    <tspan fill="#14b8a6">F</tspan>
+    <tspan fill="#0b1220">P</tspan>
+    <tspan fill="#14b8a6">C</tspan>
+  </text>
+</svg>
