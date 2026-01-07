@@ -1,131 +1,234 @@
+/* =========================
+   FLEPACO – Base Styles
+   ========================= */
+
+/* Design Tokens */
 :root{
-  --bg:#0b1220;
-  --text:#eaf0ff;
-  --muted:#b9c6e5;
-  --line:rgba(255,255,255,.12);
-  --brand:#5eead4;
+  --bg:#f4f6fb;                 /* Hintergrund wie Startseite */
+  --text:#0b1220;               /* Primärer Text */
+  --muted:#5f6b86;              /* Sekundärer Text */
+  --line:rgba(11,18,32,.12);    /* Linien / Rahmen */
+  --brand:#14b8a6;              /* Akzentfarbe */
+  --shadow:0 10px 28px rgba(11,18,32,.08);
 }
 
-*{box-sizing:border-box}
+/* Reset & Base */
+*{
+  box-sizing:border-box;
+}
+
+html, body{
+  margin:0;
+  padding:0;
+}
 
 body{
-  margin:0;
-  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
-  background:radial-gradient(1200px 700px at 20% 10%, #14224a 0%, var(--bg) 60%);
-  color:var(--text);
+  font-family: system-ui,-apple-system,Segoe UI,Roboto,Arial;
+  background: var(--bg);
+  color: var(--text);
+  line-height:1.6;
+  font-size:16px;
 }
 
-a{color:inherit}
+/* =========================
+   Layout
+   ========================= */
 
-.wrap{max-width:1060px;margin:0 auto;padding:22px}
+.wrap{
+  max-width:1100px;
+  margin:0 auto;
+  padding:24px;
+}
+
+/* =========================
+   Navigation
+   ========================= */
 
 .nav{
   display:flex;
+  align-items:center;
   justify-content:space-between;
-  align-items:center;
-  gap:14px;
-  flex-wrap:wrap;
-}
-
-.brand{
-  display:flex;
-  align-items:center;
-  min-height:40px;
-}
-
-.brand a{
-  display:flex;
-  align-items:center;
-  text-decoration:none;
+  gap:24px;
+  padding:12px 0 28px;
 }
 
 .brand img{
-  height:36px;
+  height:42px;
   width:auto;
   display:block;
 }
 
 .links{
   display:flex;
-  gap:12px;
-  flex-wrap:wrap;
   align-items:center;
+  gap:14px;
+  flex-wrap:wrap;
 }
 
 .links a{
+  color:var(--text);
   text-decoration:none;
-  opacity:.92;
+  font-weight:600;
+  padding:8px 12px;
+  border-radius:10px;
 }
 
+.links a:hover{
+  background:rgba(255,255,255,.7);
+}
+
+/* =========================
+   Buttons
+   ========================= */
+
 .btn{
-  padding:10px 14px;
-  border-radius:12px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:10px 16px;
+  border-radius:999px;
   border:1px solid var(--line);
+  background:rgba(255,255,255,.9);
+  color:var(--text);
   text-decoration:none;
+  font-weight:600;
+  box-shadow:var(--shadow);
+  transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
+}
+
+.btn:hover{
+  transform:translateY(-1px);
+  box-shadow:0 14px 36px rgba(11,18,32,.12);
+  background:#fff;
 }
 
 .btn.primary{
-  background:var(--brand);
-  color:#06201c;
   border-color:transparent;
+  background:linear-gradient(180deg, rgba(20,184,166,.95), rgba(20,184,166,.78));
+  color:#06201c;
   font-weight:700;
 }
 
-.hero{
-  padding:44px 0 18px;
-  display:grid;
-  gap:14px;
-  grid-template-columns:1.2fr .8fr;
-}
+/* =========================
+   Typography
+   ========================= */
 
-.card{
-  border:1px solid var(--line);
-  border-radius:18px;
-  padding:18px;
-  background:rgba(255,255,255,.04);
+h1, h2, h3{
+  margin:0 0 12px;
+  line-height:1.25;
 }
 
 h1{
-  margin:0 0 10px;
-  font-size:40px;
-  line-height:1.05;
+  font-size:34px;
+  font-weight:700;
 }
 
 h2{
-  margin:0 0 10px;
-  font-size:22px;
+  font-size:24px;
+  font-weight:700;
 }
 
-.muted{color:var(--muted)}
+h3{
+  font-size:18px;
+  font-weight:700;
+}
+
+p{
+  margin:0 0 14px;
+}
+
+.muted{
+  color:var(--muted);
+}
+
+/* =========================
+   Hero / Sections
+   ========================= */
+
+.hero{
+  display:grid;
+  grid-template-columns: 1.2fr .8fr;
+  gap:24px;
+  margin-bottom:32px;
+}
+
+/* =========================
+   Cards
+   ========================= */
+
+.card{
+  background:rgba(255,255,255,.9);
+  border-radius:18px;
+  padding:22px;
+  box-shadow:var(--shadow);
+}
+
+/* =========================
+   Grids
+   ========================= */
 
 .grid3{
   display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:14px;
+  grid-template-columns: repeat(3, 1fr);
+  gap:18px;
 }
+
+/* =========================
+   Footer (DE / EN)
+   ========================= */
 
 .footer{
-  margin-top:28px;
-  padding:18px 0;
-  border-top:1px solid var(--line);
+  margin-top:36px;
+  padding:18px 0 8px;
+  font-size:13px;
   color:var(--muted);
-  font-size:14px;
+  text-align:center;
 }
+
+.footer a{
+  color:inherit;
+  text-decoration:none;
+  margin:0 6px;
+}
+
+.footer a:hover{
+  text-decoration:underline;
+}
+
+/* =========================
+   Responsive
+   ========================= */
 
 @media(max-width:900px){
-  .hero{grid-template-columns:1fr}
-  .grid3{grid-template-columns:1fr}
-  h1{font-size:32px}
-}
-/* Logo final */
-.brand{
-  display:flex;
-  align-items:center;
-  color:#eaf0ff;
+  .hero{
+    grid-template-columns:1fr;
+  }
 }
 
-.brand img{
-  height:34px;
-  width:auto;
-  display:block;
+@media(max-width:600px){
+  .wrap{
+    padding:18px;
+  }
+
+  h1{
+    font-size:28px;
+  }
+
+  h2{
+    font-size:22px;
+  }
+
+  .grid3{
+    grid-template-columns:1fr;
+  }
+
+  .nav{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:12px;
+  }
+
+  .links{
+    width:100%;
+  }
 }
