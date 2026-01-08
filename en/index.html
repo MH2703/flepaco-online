@@ -14,6 +14,27 @@
   <style>
     html{ scroll-behavior:smooth; }
 
+    /* Global anchor offset for fixed/sticky nav */
+    :root{ scroll-padding-top:110px; }
+
+    /* Skip link (keyboard accessibility) */
+    .skip-link{
+      position:absolute;
+      left:12px;
+      top:12px;
+      padding:10px 12px;
+      border-radius:12px;
+      background:rgba(255,255,255,.95);
+      border:1px solid rgba(11,18,32,.12);
+      box-shadow:0 10px 28px rgba(11,18,32,.08);
+      color:inherit;
+      text-decoration:none;
+      transform:translateY(-140%);
+      transition:transform .15s ease;
+      z-index:9999;
+    }
+    .skip-link:focus{ transform:translateY(0); }
+
     /* Focus / Accessibility */
     a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible{
       outline:3px solid rgba(20,184,166,.35);
@@ -21,8 +42,8 @@
       border-radius:10px;
     }
 
-    /* Scroll Snap – desktop only */
-    @media (min-width:900px){
+    /* Scroll Snap – desktop only + only if user allows motion */
+    @media (min-width:900px) and (prefers-reduced-motion: no-preference){
       body{ scroll-snap-type:y proximity; overflow-y:scroll; }
       .page{ scroll-snap-align:start; scroll-snap-stop:normal; }
       #contact{ scroll-snap-align:none; }
@@ -79,8 +100,10 @@
       box-shadow:0 14px 34px rgba(11,18,32,.08);
     }
 
-    /* Read more */
-    .more{ display:none; margin-top:10px; }
+    /* Read more (accessible: use hidden attribute) */
+    .more{ margin-top:10px; }
+    .more[hidden]{ display:none; }
+
     .toggle{
       margin-top:10px;
       background:none;
@@ -109,10 +132,16 @@
       padding-top:18px;
       border-top:1px solid rgba(11,18,32,.10);
     }
+
+    @media(max-width:600px){
+      :root{ scroll-padding-top:90px; }
+    }
   </style>
 </head>
 
 <body>
+<a class="skip-link" href="#top">Skip to content</a>
+
 <div class="wrap">
 
 <header class="nav">
@@ -121,7 +150,7 @@
       <img src="/flepaco-online/assets/logo.svg" alt="FLEPACO">
     </a>
   </div>
-  <nav class="links">
+  <nav class="links" aria-label="Primary navigation">
     <a href="#top">Home</a>
     <a href="#services">Services</a>
     <a href="#process">Process</a>
@@ -131,7 +160,7 @@
 </header>
 
 <!-- HERO -->
-<section id="top" class="hero page">
+<section id="top" class="hero page" aria-label="Home">
   <div class="card">
     <h1>Flexible Packaging Consulting</h1>
     <p class="muted">
@@ -142,7 +171,7 @@
 </section>
 
 <!-- SERVICES -->
-<section id="services" class="page">
+<section id="services" class="page" aria-label="Services">
   <div class="chapter">
     <div class="num">01</div>
     <h2>Services</h2>
@@ -150,59 +179,71 @@
 
   <div class="grid3">
     <div class="card">
-      <h3>Analysis & Consulting</h3>
+      <h3>Analysis &amp; Consulting</h3>
       <p class="muted">Structured evaluation of technical options.</p>
-      <div class="more">
+
+      <div class="more" id="more-1" hidden>
         <p class="muted">
           Market comparison, feasibility studies,
           risk and cost assessment.
         </p>
       </div>
-      <button class="toggle">Read more</button>
+
+      <button class="toggle" type="button" aria-expanded="false" aria-controls="more-1">
+        Read more
+      </button>
     </div>
 
     <div class="card">
-      <h3>Materials & Specifications</h3>
+      <h3>Materials &amp; Specifications</h3>
       <p class="muted">Design of materials and barrier concepts.</p>
-      <div class="more">
+
+      <div class="more" id="more-2" hidden>
         <p class="muted">
           Sealing performance, migration,
           recyclability and regulatory requirements.
         </p>
       </div>
-      <button class="toggle">Read more</button>
+
+      <button class="toggle" type="button" aria-expanded="false" aria-controls="more-2">
+        Read more
+      </button>
     </div>
 
     <div class="card">
       <h3>Project Support</h3>
       <p class="muted">Support up to production approval.</p>
-      <div class="more">
+
+      <div class="more" id="more-3" hidden>
         <p class="muted">
           Supplier coordination, testing,
           approvals and industrialisation.
         </p>
       </div>
-      <button class="toggle">Read more</button>
+
+      <button class="toggle" type="button" aria-expanded="false" aria-controls="more-3">
+        Read more
+      </button>
     </div>
   </div>
 </section>
 
 <!-- PROCESS -->
-<section id="process" class="page">
+<section id="process" class="page" aria-label="Process">
   <div class="chapter">
     <div class="num">02</div>
     <h2>Process</h2>
   </div>
 
   <div class="grid3">
-    <div class="card"><h3>1. Initial discussion</h3><p class="muted">Objectives & scope.</p></div>
-    <div class="card"><h3>2. Recommendation</h3><p class="muted">Options & evaluation.</p></div>
-    <div class="card"><h3>3. Implementation</h3><p class="muted">Testing & rollout.</p></div>
+    <div class="card"><h3>1. Initial discussion</h3><p class="muted">Objectives &amp; scope.</p></div>
+    <div class="card"><h3>2. Recommendation</h3><p class="muted">Options &amp; evaluation.</p></div>
+    <div class="card"><h3>3. Implementation</h3><p class="muted">Testing &amp; rollout.</p></div>
   </div>
 </section>
 
 <!-- CONTACT -->
-<section id="contact" class="page">
+<section id="contact" class="page" aria-label="Contact">
   <div class="chapter">
     <div class="num">03</div>
     <h2>Contact</h2>
@@ -210,18 +251,19 @@
 
   <div class="card">
     <form>
-      <label>Name
-        <input type="text" placeholder="Your name">
-      </label>
-      <label>Email
-        <input type="email" placeholder="name@company.com">
-      </label>
-      <label>Message
-        <textarea placeholder="Briefly describe your request"></textarea>
-      </label>
+      <label for="name">Name</label>
+      <input id="name" type="text" placeholder="Your name" autocomplete="name">
+
+      <label for="email">Email</label>
+      <input id="email" type="email" placeholder="name@company.com" autocomplete="email">
+
+      <label for="msg">Message</label>
+      <textarea id="msg" placeholder="Briefly describe your request"></textarea>
+
       <button type="submit" class="btn primary" style="margin-top:16px;">
         Send enquiry
       </button>
+
       <p class="muted" style="margin-top:10px;font-size:14px;">
         Note: Form currently without backend (prepared for WordPress).
       </p>
@@ -238,31 +280,38 @@
 </div>
 
 <script>
-document.getElementById("y").textContent=new Date().getFullYear();
+  // Year
+  document.getElementById("y").textContent = new Date().getFullYear();
 
-/* Active navigation */
-const sections=document.querySelectorAll("section[id]");
-const links=document.querySelectorAll(".links a[href^='#']");
-const observer=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){
-      links.forEach(l=>{
-        l.classList.toggle("active",l.getAttribute("href")==="#"+e.target.id);
-      });
-    }
-  });
-},{threshold:.6});
-sections.forEach(s=>observer.observe(s));
+  // Active navigation (one observer, observe all sections)
+  const sections = document.querySelectorAll("section[id]");
+  const links = document.querySelectorAll(".links a[href^='#']");
 
-/* Read more toggle */
-document.querySelectorAll(".toggle").forEach(btn=>{
-  btn.addEventListener("click",()=>{
-    const more=btn.previousElementSibling;
-    const open=more.style.display==="block";
-    more.style.display=open?"none":"block";
-    btn.textContent=open?"Read less":"Read more";
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        links.forEach(l => {
+          l.classList.toggle("active", l.getAttribute("href") === "#" + e.target.id);
+        });
+      }
+    });
+  }, { threshold: 0.6 });
+
+  sections.forEach(s => observer.observe(s));
+
+  // Read more toggle (accessible)
+  document.querySelectorAll(".toggle").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const targetId = btn.getAttribute("aria-controls");
+      const more = document.getElementById(targetId);
+      const isOpen = btn.getAttribute("aria-expanded") === "true";
+
+      btn.setAttribute("aria-expanded", String(!isOpen));
+      more.hidden = isOpen;
+
+      btn.textContent = isOpen ? "Read more" : "Read less";
+    });
   });
-});
 </script>
 </body>
 </html>
