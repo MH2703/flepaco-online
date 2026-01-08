@@ -13,7 +13,7 @@
 
   <style>
     html{scroll-behavior:smooth}
-    :root{scroll-padding-top:110px}
+    :root{scroll-padding-top:92px}
 
     .wrap{max-width:980px;margin:0 auto}
     h1,h2,h3{line-height:1.18;letter-spacing:-.01em}
@@ -63,22 +63,11 @@
       background:linear-gradient(to right,transparent,rgba(0,0,0,.10),transparent)
     }
 
-    .links a[href^="#"]{position:relative}
-    .links a.active::after{
-      content:"";position:absolute;left:12px;right:12px;bottom:6px;
-      height:2px;background:var(--brand)
-    }
-
     .chapter{margin-bottom:20px}
     .chapter .num{font-size:12px;letter-spacing:2.4px;font-weight:800;color:rgba(0,0,0,.45)}
 
     .hero h1{max-width:24ch;margin-bottom:10px}
     .hero p{max-width:66ch;font-size:18px;line-height:1.6;margin:0}
-
-    .footer{margin-top:44px;padding-top:18px;border-top:1px solid rgba(0,0,0,.10)}
-    .contact-meta{margin-top:14px;font-size:14px}
-    .contact-meta a{color:inherit;text-decoration:none;font-weight:650}
-    .contact-meta a:hover{text-decoration:underline}
 
     .grid2{display:grid;grid-template-columns:1.15fr .85fr;gap:22px;align-items:stretch}
     @media(max-width:900px){.grid2{grid-template-columns:1fr}}
@@ -87,6 +76,14 @@
 
     ul.muted{margin:12px 0 0;padding-left:18px;line-height:1.7}
     ul.muted li{margin:6px 0}
+
+    .footer{margin-top:44px;padding-top:18px;border-top:1px solid rgba(0,0,0,.10)}
+    .footer a{color:inherit;text-decoration:none}
+    .footer a:hover{text-decoration:underline}
+
+    .contact-meta{margin-top:14px;font-size:14px}
+    .contact-meta a{color:inherit;text-decoration:none;font-weight:650}
+    .contact-meta a:hover{text-decoration:underline}
 
     .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
     @media(max-width:700px){.form-row{grid-template-columns:1fr}}
@@ -116,33 +113,65 @@
     .status[data-show="true"]{display:block}
     .hp{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
 
-    .footer a{color:inherit;text-decoration:none}
-    .footer a:hover{text-decoration:underline}
+    header.nav{
+      position:sticky;
+      top:0;
+      z-index:2000;
+      background:rgba(255,255,255,.88);
+      border-bottom:1px solid rgba(11,18,32,.10);
+      backdrop-filter:saturate(180%) blur(8px);
+      -webkit-backdrop-filter:saturate(180%) blur(8px);
+    }
+    header.nav.is-scrolled{
+      box-shadow:0 10px 26px rgba(11,18,32,.08);
+    }
 
-    /* --- Mobile nav (burger) --- */
-    .nav{position:relative}
+    .nav{display:flex;align-items:center;gap:12px;padding:14px 0;position:relative}
+    .brand a{display:inline-flex;align-items:center}
+    .brand img{height:28px;width:auto;display:block}
+
+    .links{display:flex;gap:6px;align-items:center;margin-left:auto;flex-wrap:wrap}
+    .links a{display:inline-flex;align-items:center;padding:10px 12px;border-radius:12px;text-decoration:none;color:inherit}
+    .links a:hover{background:rgba(11,18,32,.04)}
+    .links a[href^="#"]{position:relative}
+    .links a.active::after{
+      content:"";position:absolute;left:12px;right:12px;bottom:6px;height:2px;background:var(--brand);border-radius:2px
+    }
+
     .navToggle{
       display:none;
       margin-left:auto;
       border:1px solid rgba(11,18,32,.12);
-      background:rgba(255,255,255,.90);
+      background:rgba(255,255,255,.92);
       border-radius:12px;
       padding:10px 12px;
       line-height:0;
       cursor:pointer;
       -webkit-tap-highlight-color:transparent;
+      position:relative;
+      width:44px;height:40px;
+      justify-content:center;align-items:center;
     }
     .navToggle .sr-only{
       position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;
     }
+
+    .navToggle .icon{
+      position:absolute;
+      inset:0;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      pointer-events:none;
+      opacity:0;
+      transition:opacity .12s ease;
+    }
     .navToggle svg{width:22px;height:22px;display:block}
-    .iconClose{display:none}
-    .nav.is-open .iconHamburger{display:none}
-    .nav.is-open .iconClose{display:block}
+    .navToggle .icon--hamburger{opacity:1}
+    .nav.is-open .navToggle .icon--hamburger{opacity:0}
+    .nav.is-open .navToggle .icon--close{opacity:1}
 
     @media(max-width:900px){
-      .nav{display:flex;align-items:center;gap:12px}
-      .navToggle{display:inline-flex;align-items:center;justify-content:center}
       .links{
         display:none;
         position:absolute;
@@ -154,19 +183,16 @@
         border:1px solid rgba(11,18,32,.12);
         border-radius:16px;
         box-shadow:0 16px 40px rgba(11,18,32,.10);
-        z-index:999;
+        z-index:2500;
       }
+      .navToggle{display:inline-flex}
       .nav.is-open .links{
         display:flex;
         flex-direction:column;
         gap:6px;
+        margin-left:0;
       }
-      .links a{
-        display:flex;
-        padding:12px 12px;
-        border-radius:12px;
-      }
-      .links a:hover{background:rgba(11,18,32,.04);text-decoration:none}
+      .links a{width:100%}
     }
 
     body.nav-locked{overflow:hidden}
@@ -188,13 +214,17 @@
   <button class="navToggle" type="button" aria-controls="primaryNavEn" aria-expanded="false">
     <span class="sr-only">Open menu</span>
 
-    <svg class="iconHamburger" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-      <path d="M4 6h16M4 12h16M4 18h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-    </svg>
+    <span class="icon icon--hamburger" aria-hidden="true">
+      <svg viewBox="0 0 24 24" focusable="false">
+        <path d="M4 6h16M4 12h16M4 18h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </span>
 
-    <svg class="iconClose" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-      <path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-    </svg>
+    <span class="icon icon--close" aria-hidden="true">
+      <svg viewBox="0 0 24 24" focusable="false">
+        <path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </span>
   </button>
 
   <nav class="links" id="primaryNavEn" aria-label="Primary navigation">
@@ -345,6 +375,14 @@
 <script>
   document.getElementById("y").textContent = new Date().getFullYear();
 
+  // Sticky header shadow on scroll
+  (function(){
+    const header = document.getElementById("siteNavEn");
+    const onScroll = () => header.classList.toggle("is-scrolled", window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, {passive:true});
+  })();
+
   // Burger menu (accessible) + close on scroll + scroll lock
   (function(){
     const header = document.getElementById("siteNavEn");
@@ -400,40 +438,43 @@
   })();
 
   // Active nav
-  const sections = document.querySelectorAll("section[id]");
-  const links = document.querySelectorAll(".links a[href^='#']");
-  const observer = new IntersectionObserver(entries=>{
-    entries.forEach(e=>{
-      if(e.isIntersecting){
-        links.forEach(l=>l.classList.toggle("active", l.getAttribute("href")==="#"+e.target.id));
-      }
-    });
-  },{threshold:.6});
-  sections.forEach(s=>observer.observe(s));
+  (function(){
+    const sections = document.querySelectorAll("section[id]");
+    const links = document.querySelectorAll(".links a[href^='#']");
+    const observer = new IntersectionObserver(entries=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          links.forEach(l=>l.classList.toggle("active", l.getAttribute("href")==="#"+e.target.id));
+        }
+      });
+    },{threshold:.6});
+    sections.forEach(s=>observer.observe(s));
+  })();
 
   // Contact form (no backend): validate + open mail draft
-  const formEn = document.getElementById("contactFormEn");
-  const statusEn = document.getElementById("statusEn");
+  (function(){
+    const formEn = document.getElementById("contactFormEn");
+    const statusEn = document.getElementById("statusEn");
 
-  formEn.addEventListener("submit", (ev) => {
-    ev.preventDefault();
+    formEn.addEventListener("submit", (ev) => {
+      ev.preventDefault();
 
-    const hp = document.getElementById("companyEn");
-    if (hp && hp.value.trim() !== "") return;
+      const hp = document.getElementById("companyEn");
+      if (hp && hp.value.trim() !== "") return;
 
-    const name = document.getElementById("nameEn").value.trim();
-    const email = document.getElementById("emailEn").value.trim();
-    const topic = document.getElementById("topicEn").value.trim();
-    const msg = document.getElementById("msgEn").value.trim();
+      const name = document.getElementById("nameEn").value.trim();
+      const email = document.getElementById("emailEn").value.trim();
+      const topic = document.getElementById("topicEn").value.trim();
+      const msg = document.getElementById("msgEn").value.trim();
 
-    if (!email || !msg) {
-      statusEn.dataset.show = "true";
-      statusEn.textContent = "Please fill in email and message.";
-      return;
-    }
+      if (!email || !msg) {
+        statusEn.dataset.show = "true";
+        statusEn.textContent = "Please fill in email and message.";
+        return;
+      }
 
-    const subject = topic ? `Enquiry: ${topic}` : "Website enquiry";
-    const body =
+      const subject = topic ? `Enquiry: ${topic}` : "Website enquiry";
+      const body =
 `Name: ${name || "-"}
 Email: ${email}
 Topic: ${topic || "-"} 
@@ -441,12 +482,13 @@ Topic: ${topic || "-"}
 Message:
 ${msg}`;
 
-    statusEn.dataset.show = "true";
-    statusEn.textContent = "Thanks — opening an email draft…";
+      statusEn.dataset.show = "true";
+      statusEn.textContent = "Thanks — opening an email draft…";
 
-    const mailto = `mailto:hello@flepaco.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    window.location.href = mailto;
-  });
+      const mailto = `mailto:hello@flepaco.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      window.location.href = mailto;
+    });
+  })();
 </script>
 </body>
 </html>
