@@ -12,60 +12,52 @@
   <link rel="stylesheet" href="/flepaco-online/assets/style.css?v=9">
 
   <style>
-    html{ scroll-behavior:smooth; }
-    :root{ scroll-padding-top:110px; }
+    html{scroll-behavior:smooth}
+    :root{scroll-padding-top:110px}
 
     .skip-link{
-      position:absolute; left:12px; top:12px;
-      padding:10px 12px; border-radius:12px;
-      background:#fff; border:1px solid rgba(0,0,0,.1);
-      transform:translateY(-140%);
-      z-index:9999;
+      position:absolute;left:12px;top:12px;
+      padding:10px 12px;border-radius:12px;
+      background:#fff;border:1px solid rgba(0,0,0,.1);
+      transform:translateY(-140%);z-index:9999
     }
-    .skip-link:focus{ transform:translateY(0); }
+    .skip-link:focus{transform:translateY(0)}
 
-    a:focus-visible, button:focus-visible{
+    a:focus-visible,button:focus-visible{
       outline:3px solid rgba(20,184,166,.35);
-      outline-offset:3px;
-      border-radius:10px;
+      outline-offset:3px;border-radius:10px
     }
 
-    @media (min-width:900px) and (prefers-reduced-motion: no-preference){
-      body{ scroll-snap-type:y proximity; overflow-y:scroll; }
-      .page{ scroll-snap-align:start; }
-      #kontakt{ scroll-snap-align:none; }
+    @media(min-width:900px) and (prefers-reduced-motion:no-preference){
+      body{scroll-snap-type:y proximity;overflow-y:scroll}
+      .page{scroll-snap-align:start}
+      #kontakt{scroll-snap-align:none}
     }
 
-    .page{ padding:64px 0; position:relative; }
+    .page{padding:64px 0;position:relative}
     .page:not(#top)::before{
-      content:""; position:absolute; top:0; left:0; right:0; height:1px;
-      background:linear-gradient(to right, transparent, rgba(0,0,0,.1), transparent);
+      content:"";position:absolute;top:0;left:0;right:0;height:1px;
+      background:linear-gradient(to right,transparent,rgba(0,0,0,.1),transparent)
     }
 
-    .links a[href^="#"]{ position:relative; }
+    .links a[href^="#"]{position:relative}
     .links a.active::after{
-      content:""; position:absolute; left:12px; right:12px; bottom:6px;
-      height:2px; background:var(--brand);
+      content:"";position:absolute;left:12px;right:12px;bottom:6px;
+      height:2px;background:var(--brand)
     }
 
-    .chapter{ margin-bottom:20px; }
-    .chapter .num{
-      font-size:12px; letter-spacing:2.4px; font-weight:800;
-      color:rgba(0,0,0,.45);
-    }
+    .chapter{margin-bottom:20px}
+    .chapter .num{font-size:12px;letter-spacing:2.4px;font-weight:800;color:rgba(0,0,0,.45)}
 
-    .hero h1{ max-width:22ch; }
-    .hero p{ max-width:64ch; font-size:18px; line-height:1.6; }
+    .hero h1{max-width:22ch}
+    .hero p{max-width:64ch;font-size:18px;line-height:1.6}
 
-    .card{
-      padding:26px; border-radius:20px;
-      box-shadow:0 14px 34px rgba(0,0,0,.08);
-    }
+    .card{padding:26px;border-radius:20px;box-shadow:0 14px 34px rgba(0,0,0,.08)}
 
-    .more[hidden]{ display:none; }
-    .toggle{ background:none; border:none; color:var(--brand); font-weight:600; cursor:pointer; }
+    .more[hidden]{display:none}
+    .toggle{background:none;border:none;color:var(--brand);font-weight:600;cursor:pointer}
 
-    .footer{ margin-top:44px; padding-top:18px; border-top:1px solid rgba(0,0,0,.1); }
+    .footer{margin-top:44px;padding-top:18px;border-top:1px solid rgba(0,0,0,.1)}
   </style>
 </head>
 
@@ -83,6 +75,7 @@
   <nav class="links">
     <a href="#top">Start</a>
     <a href="#why">Warum</a>
+    <a href="#profil">Profil</a>
     <a href="#leistungen">Leistungen</a>
     <a href="#ablauf">Ablauf</a>
     <a href="#kontakt">Kontakt</a>
@@ -99,7 +92,9 @@
       für sichere Materialentscheidungen, klare Spezifikationen und schnellere
       Industrialisierung von der Idee bis zur Serie.
     </p>
-    <a href="#kontakt" class="btn primary" style="margin-top:18px;">Kostenloses Erstgespräch</a>
+    <a href="#kontakt" class="btn primary" style="margin-top:18px;">
+      Kostenloses Erstgespräch
+    </a>
   </div>
 </section>
 
@@ -133,21 +128,85 @@
   </div>
 </section>
 
+<!-- PROFIL -->
+<section id="profil" class="page">
+  <div class="chapter"><div class="num">02</div><h2>Profil</h2></div>
+
+  <div class="grid2">
+    <div class="card">
+      <h3>Über mich</h3>
+      <p class="muted">
+        Hinter FLEPACO stehe ich als unabhängiger Berater für flexible Verpackungen –
+        an der Schnittstelle aus Material, Prozess und Spezifikation.
+      </p>
+      <p class="muted">
+        Ich unterstütze fundierte Entscheidungen von der ersten Idee bis zur Serienfreigabe.
+        Der Fokus liegt auf Umsetzbarkeit, Tests und klarer Dokumentation.
+      </p>
+      <p class="muted">
+        Ziel ist es, Komplexität zu reduzieren und Lösungen zu entwickeln,
+        die im industriellen Alltag zuverlässig funktionieren.
+      </p>
+
+      <div class="signature">
+        <strong>[Name]</strong>
+        <span class="muted">Flexible Packaging Consultant</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>Schwerpunkte</h3>
+      <ul class="muted">
+        <li>Material- &amp; Barrierekonzepte</li>
+        <li>Siegelperformance &amp; Prozessfenster</li>
+        <li>Spezifikationen &amp; Prüfmethoden</li>
+        <li>Recycling &amp; Regulatorik</li>
+        <li>Testpläne, Trials, Freigaben</li>
+        <li>Lieferantenschnittstelle</li>
+      </ul>
+      <a href="#kontakt" class="btn">Kontakt aufnehmen</a>
+    </div>
+  </div>
+</section>
+
 <!-- LEISTUNGEN -->
 <section id="leistungen" class="page">
-  <div class="chapter"><div class="num">02</div><h2>Leistungen</h2></div>
-  <!-- bestehende Leistungen unverändert -->
+  <div class="chapter"><div class="num">03</div><h2>Leistungen</h2></div>
+
+  <div class="grid3">
+    <div class="card">
+      <h3>Analyse &amp; Beratung</h3>
+      <p class="muted">Strukturierte Bewertung technischer Optionen.</p>
+    </div>
+    <div class="card">
+      <h3>Material &amp; Spezifikation</h3>
+      <p class="muted">Auslegung von Materialien und Barrieren.</p>
+    </div>
+    <div class="card">
+      <h3>Projektbegleitung</h3>
+      <p class="muted">Begleitung bis zur Serienfreigabe.</p>
+    </div>
+  </div>
 </section>
 
 <!-- ABLAUF -->
 <section id="ablauf" class="page">
-  <div class="chapter"><div class="num">03</div><h2>Ablauf</h2></div>
+  <div class="chapter"><div class="num">04</div><h2>Ablauf</h2></div>
+  <div class="grid3">
+    <div class="card"><h3>1. Erstgespräch</h3><p class="muted">Ziele &amp; Rahmen.</p></div>
+    <div class="card"><h3>2. Empfehlung</h3><p class="muted">Optionen &amp; Bewertung.</p></div>
+    <div class="card"><h3>3. Umsetzung</h3><p class="muted">Tests &amp; Implementierung.</p></div>
+  </div>
 </section>
 
 <!-- KONTAKT -->
 <section id="kontakt" class="page">
-  <div class="chapter"><div class="num">04</div><h2>Kontakt</h2></div>
-  <div class="footer">© <span id="y"></span> FLEPACO</div>
+  <div class="chapter"><div class="num">05</div><h2>Kontakt</h2></div>
+  <div class="footer">
+    © <span id="y"></span> FLEPACO ·
+    <a href="/flepaco-online/impressum.html">Impressum</a> ·
+    <a href="/flepaco-online/datenschutz.html">Datenschutz</a>
+  </div>
 </section>
 
 </div>
