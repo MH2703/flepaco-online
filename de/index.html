@@ -14,6 +14,27 @@
   <style>
     html{ scroll-behavior:smooth; }
 
+    /* Global anchor offset for fixed/sticky nav */
+    :root{ scroll-padding-top:110px; }
+
+    /* Skip link (keyboard accessibility) */
+    .skip-link{
+      position:absolute;
+      left:12px;
+      top:12px;
+      padding:10px 12px;
+      border-radius:12px;
+      background:rgba(255,255,255,.95);
+      border:1px solid rgba(11,18,32,.12);
+      box-shadow:0 10px 28px rgba(11,18,32,.08);
+      color:inherit;
+      text-decoration:none;
+      transform:translateY(-140%);
+      transition:transform .15s ease;
+      z-index:9999;
+    }
+    .skip-link:focus{ transform:translateY(0); }
+
     /* Focus (Accessibility) */
     a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible{
       outline:3px solid rgba(20,184,166,.35);
@@ -21,8 +42,8 @@
       border-radius:10px;
     }
 
-    /* Scroll Snap: Desktop only */
-    @media (min-width:900px){
+    /* Scroll Snap: desktop only + only if user allows motion */
+    @media (min-width:900px) and (prefers-reduced-motion: no-preference){
       body{ scroll-snap-type:y proximity; overflow-y:scroll; }
       .page{ scroll-snap-align:start; scroll-snap-stop:normal; }
       #kontakt{ scroll-snap-align:none; }
@@ -64,8 +85,10 @@
       box-shadow:0 14px 34px rgba(11,18,32,.08);
     }
 
-    /* Read more */
-    .more{ display:none; margin-top:10px; }
+    /* Read more (accessible: use hidden attribute) */
+    .more{ margin-top:10px; }
+    .more[hidden]{ display:none; }
+
     .toggle{
       margin-top:10px; background:none; border:none;
       color:var(--brand); font-weight:600; cursor:pointer;
@@ -85,10 +108,16 @@
       margin-top:44px; padding-top:18px;
       border-top:1px solid rgba(11,18,32,.10);
     }
+
+    @media(max-width:600px){
+      :root{ scroll-padding-top:90px; }
+    }
   </style>
 </head>
 
 <body>
+<a class="skip-link" href="#top">Zum Inhalt springen</a>
+
 <div class="wrap">
 
 <header class="nav">
@@ -97,7 +126,7 @@
       <img src="/flepaco-online/assets/logo.svg" alt="FLEPACO">
     </a>
   </div>
-  <nav class="links">
+  <nav class="links" aria-label="Hauptnavigation">
     <a href="#top">Start</a>
     <a href="#leistungen">Leistungen</a>
     <a href="#ablauf">Ablauf</a>
@@ -107,7 +136,7 @@
 </header>
 
 <!-- HERO -->
-<section id="top" class="hero page">
+<section id="top" class="hero page" aria-label="Start">
   <div class="card">
     <h1>Flexible Packaging Consulting</h1>
     <p class="muted">
@@ -118,75 +147,88 @@
 </section>
 
 <!-- LEISTUNGEN -->
-<section id="leistungen" class="page">
+<section id="leistungen" class="page" aria-label="Leistungen">
   <div class="chapter"><div class="num">01</div><h2>Leistungen</h2></div>
 
   <div class="grid3">
     <div class="card">
-      <h3>Analyse & Beratung</h3>
+      <h3>Analyse &amp; Beratung</h3>
       <p class="muted">Strukturierte Bewertung technischer Optionen.</p>
-      <div class="more">
+
+      <div class="more" id="more-1" hidden>
         <p class="muted">
           Marktvergleich, Machbarkeitsanalyse, Risiko- und Kostenbewertung.
         </p>
       </div>
-      <button class="toggle" type="button">Mehr anzeigen</button>
+
+      <button class="toggle" type="button" aria-expanded="false" aria-controls="more-1">
+        Mehr anzeigen
+      </button>
     </div>
 
     <div class="card">
-      <h3>Material & Spezifikation</h3>
+      <h3>Material &amp; Spezifikation</h3>
       <p class="muted">Auslegung von Materialien und Barrieren.</p>
-      <div class="more">
+
+      <div class="more" id="more-2" hidden>
         <p class="muted">
           Siegelverhalten, Migration, Recyclingfähigkeit,
           regulatorische Anforderungen.
         </p>
       </div>
-      <button class="toggle" type="button">Mehr anzeigen</button>
+
+      <button class="toggle" type="button" aria-expanded="false" aria-controls="more-2">
+        Mehr anzeigen
+      </button>
     </div>
 
     <div class="card">
       <h3>Projektbegleitung</h3>
       <p class="muted">Begleitung bis zur Serienfreigabe.</p>
-      <div class="more">
+
+      <div class="more" id="more-3" hidden>
         <p class="muted">
           Lieferantenschnittstelle, Tests, Abnahmen,
           Industrialisierung.
         </p>
       </div>
-      <button class="toggle" type="button">Mehr anzeigen</button>
+
+      <button class="toggle" type="button" aria-expanded="false" aria-controls="more-3">
+        Mehr anzeigen
+      </button>
     </div>
   </div>
 </section>
 
 <!-- ABLAUF -->
-<section id="ablauf" class="page">
+<section id="ablauf" class="page" aria-label="Ablauf">
   <div class="chapter"><div class="num">02</div><h2>Ablauf</h2></div>
   <div class="grid3">
-    <div class="card"><h3>1. Erstgespräch</h3><p class="muted">Ziele & Rahmen.</p></div>
-    <div class="card"><h3>2. Empfehlung</h3><p class="muted">Optionen & Bewertung.</p></div>
-    <div class="card"><h3>3. Umsetzung</h3><p class="muted">Tests & Implementierung.</p></div>
+    <div class="card"><h3>1. Erstgespräch</h3><p class="muted">Ziele &amp; Rahmen.</p></div>
+    <div class="card"><h3>2. Empfehlung</h3><p class="muted">Optionen &amp; Bewertung.</p></div>
+    <div class="card"><h3>3. Umsetzung</h3><p class="muted">Tests &amp; Implementierung.</p></div>
   </div>
 </section>
 
 <!-- KONTAKT -->
-<section id="kontakt" class="page">
+<section id="kontakt" class="page" aria-label="Kontakt">
   <div class="chapter"><div class="num">03</div><h2>Kontakt</h2></div>
 
   <div class="card">
     <form>
-      <label>Name
-        <input type="text" placeholder="Ihr Name">
-      </label>
-      <label>E-Mail
-        <input type="email" placeholder="name@unternehmen.com">
-      </label>
-      <label>Nachricht
-        <textarea placeholder="Kurz Ihr Anliegen beschreiben"></textarea>
-      </label>
+      <label for="name">Name</label>
+      <input id="name" type="text" placeholder="Ihr Name" autocomplete="name">
+
+      <label for="email">E-Mail</label>
+      <input id="email" type="email" placeholder="name@unternehmen.com" autocomplete="email">
+
+      <label for="msg">Nachricht</label>
+      <textarea id="msg" placeholder="Kurz Ihr Anliegen beschreiben"></textarea>
+
       <button type="submit" class="btn primary" style="margin-top:16px;">
         Anfrage senden
       </button>
+
       <p class="muted" style="margin-top:10px;font-size:14px;">
         Hinweis: Formular aktuell ohne Backend (Vorbereitung für WordPress).
       </p>
@@ -206,7 +248,7 @@
   // Year
   document.getElementById("y").textContent = new Date().getFullYear();
 
-  // Active navigation (EN-style: one observer, observe all sections)
+  // Active navigation (one observer, observe all sections)
   const sections = document.querySelectorAll("section[id]");
   const links = document.querySelectorAll(".links a[href^='#']");
 
@@ -218,17 +260,21 @@
         });
       }
     });
-  }, { threshold: .6 });
+  }, { threshold: 0.6 });
 
   sections.forEach(s => observer.observe(s));
 
-  // Read more toggle
+  // Read more toggle (accessible)
   document.querySelectorAll(".toggle").forEach(btn => {
     btn.addEventListener("click", () => {
-      const more = btn.previousElementSibling;
-      const open = more.style.display === "block";
-      more.style.display = open ? "none" : "block";
-      btn.textContent = open ? "Mehr anzeigen" : "Weniger anzeigen";
+      const targetId = btn.getAttribute("aria-controls");
+      const more = document.getElementById(targetId);
+      const isOpen = btn.getAttribute("aria-expanded") === "true";
+
+      btn.setAttribute("aria-expanded", String(!isOpen));
+      more.hidden = isOpen;
+
+      btn.textContent = isOpen ? "Mehr anzeigen" : "Weniger anzeigen";
     });
   });
 </script>
