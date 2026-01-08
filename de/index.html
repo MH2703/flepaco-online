@@ -13,8 +13,9 @@
 
   <style>
     html{scroll-behavior:smooth}
-    :root{scroll-padding-top:120px}
+    :root{scroll-padding-top:92px} /* updated for sticky header height */
 
+    /* Layout polish */
     .wrap{max-width:980px;margin:0 auto}
     h1,h2,h3{line-height:1.18;letter-spacing:-.01em}
     h2{margin:6px 0 0}
@@ -38,6 +39,7 @@
       .card:hover{box-shadow:0 8px 18px rgba(11,18,32,.06);background:rgba(255,255,255,.90);}
     }
 
+    /* Skip link */
     .skip-link{
       position:absolute;left:12px;top:12px;
       padding:10px 12px;border-radius:12px;
@@ -46,27 +48,24 @@
     }
     .skip-link:focus{transform:translateY(0)}
 
+    /* Focus */
     a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{
       outline:3px solid rgba(20,184,166,.35);
       outline-offset:3px;border-radius:10px
     }
 
+    /* Scroll snap: optional + desktop only + respects reduced motion */
     @media(min-width:900px) and (prefers-reduced-motion:no-preference){
       body{scroll-snap-type:y proximity;overflow-y:scroll}
       .page{scroll-snap-align:start}
       #kontakt{scroll-snap-align:none}
     }
 
+    /* Sections */
     .page{padding:64px 0;position:relative}
     .page:not(#top)::before{
       content:"";position:absolute;top:0;left:0;right:0;height:1px;
       background:linear-gradient(to right,transparent,rgba(0,0,0,.10),transparent)
-    }
-
-    .links a[href^="#"]{position:relative}
-    .links a.active::after{
-      content:"";position:absolute;left:12px;right:12px;bottom:6px;
-      height:2px;background:var(--brand)
     }
 
     .chapter{margin-bottom:20px}
@@ -75,19 +74,27 @@
     .hero h1{max-width:22ch;margin-bottom:10px}
     .hero p{max-width:64ch;font-size:18px;line-height:1.6;margin:0}
 
-    .footer{margin-top:44px;padding-top:18px;border-top:1px solid rgba(0,0,0,.10)}
-    .contact-meta{margin-top:14px;font-size:14px}
-    .contact-meta a{color:inherit;text-decoration:none;font-weight:650}
-    .contact-meta a:hover{text-decoration:underline}
-
+    /* Grids */
     .grid2{display:grid;grid-template-columns:1.15fr .85fr;gap:22px;align-items:stretch}
     @media(max-width:900px){.grid2{grid-template-columns:1fr}}
     .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
     @media(max-width:900px){.grid3{grid-template-columns:1fr}}
 
+    /* Lists */
     ul.muted{margin:12px 0 0;padding-left:18px;line-height:1.7}
     ul.muted li{margin:6px 0}
 
+    /* Footer */
+    .footer{margin-top:44px;padding-top:18px;border-top:1px solid rgba(0,0,0,.10)}
+    .footer a{color:inherit;text-decoration:none}
+    .footer a:hover{text-decoration:underline}
+
+    /* Contact meta */
+    .contact-meta{margin-top:14px;font-size:14px}
+    .contact-meta a{color:inherit;text-decoration:none;font-weight:650}
+    .contact-meta a:hover{text-decoration:underline}
+
+    /* Contact form */
     .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
     @media(max-width:700px){.form-row{grid-template-columns:1fr}}
     label{display:block;font-weight:700;margin-top:14px}
@@ -116,59 +123,68 @@
     .status[data-show="true"]{display:block}
     .hp{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
 
-    .footer a{color:inherit;text-decoration:none}
-    .footer a:hover{text-decoration:underline}
-
-    /* --- Sticky header (always accessible) --- */
+    /* Sticky header (always visible) */
     header.nav{
       position:sticky;
       top:0;
-      z-index:1000;
-      background:rgba(244,246,251,.80);
+      z-index:2000;
+      background:rgba(255,255,255,.88);
+      border-bottom:1px solid rgba(11,18,32,.10);
       backdrop-filter:saturate(180%) blur(8px);
       -webkit-backdrop-filter:saturate(180%) blur(8px);
-      border-bottom:1px solid rgba(11,18,32,.08);
-      padding:10px 0;
+    }
+    header.nav.is-scrolled{
+      box-shadow:0 10px 26px rgba(11,18,32,.08);
     }
 
-    /* --- Mobile nav (burger) --- */
-    .nav{position:relative}
+    /* Mobile nav (burger) */
+    .nav{display:flex;align-items:center;gap:12px;padding:14px 0;position:relative}
+    .brand a{display:inline-flex;align-items:center}
+    .brand img{height:28px;width:auto;display:block}
+
+    .links{display:flex;gap:6px;align-items:center;margin-left:auto;flex-wrap:wrap}
+    .links a{display:inline-flex;align-items:center;padding:10px 12px;border-radius:12px;text-decoration:none;color:inherit}
+    .links a:hover{background:rgba(11,18,32,.04)}
+    .links a[href^="#"]{position:relative}
+    .links a.active::after{
+      content:"";position:absolute;left:12px;right:12px;bottom:6px;height:2px;background:var(--brand);border-radius:2px
+    }
+
     .navToggle{
       display:none;
       margin-left:auto;
       border:1px solid rgba(11,18,32,.12);
       background:rgba(255,255,255,.92);
       border-radius:12px;
-      width:44px;
-      height:44px;
-      padding:0;
+      padding:10px 12px;
       line-height:0;
       cursor:pointer;
-      position:relative;
       -webkit-tap-highlight-color:transparent;
+      position:relative;
+      width:44px;height:40px;
+      justify-content:center;align-items:center;
     }
     .navToggle .sr-only{
       position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;
     }
 
-    /* Robust icon toggle (never show both visually) */
-    .navToggle svg{
-      width:22px;height:22px;
+    /* Robust icon toggle (never show both) */
+    .navToggle .icon{
       position:absolute;
       inset:0;
-      margin:auto;
+      display:flex;
+      align-items:center;
+      justify-content:center;
       pointer-events:none;
-      opacity:1;
+      opacity:0;
       transition:opacity .12s ease;
-      display:block; /* even if external CSS sets inline */
     }
-    .iconClose{opacity:0}
-    .nav.is-open .iconHamburger{opacity:0}
-    .nav.is-open .iconClose{opacity:1}
+    .navToggle svg{width:22px;height:22px;display:block}
+    .navToggle .icon--hamburger{opacity:1}
+    .nav.is-open .navToggle .icon--hamburger{opacity:0}
+    .nav.is-open .navToggle .icon--close{opacity:1}
 
     @media(max-width:900px){
-      .nav{display:flex;align-items:center;gap:12px}
-      .navToggle{display:inline-flex;align-items:center;justify-content:center}
       .links{
         display:none;
         position:absolute;
@@ -176,26 +192,23 @@
         top:100%;
         margin-top:10px;
         padding:10px;
-        background:rgba(255,255,255,.97);
+        background:rgba(255,255,255,.96);
         border:1px solid rgba(11,18,32,.12);
         border-radius:16px;
         box-shadow:0 16px 40px rgba(11,18,32,.10);
-        z-index:1100; /* above sticky header */
+        z-index:2500;
       }
+      .navToggle{display:inline-flex}
       .nav.is-open .links{
         display:flex;
         flex-direction:column;
         gap:6px;
+        margin-left:0;
       }
-      .links a{
-        display:flex;
-        padding:12px 12px;
-        border-radius:12px;
-      }
-      .links a:hover{background:rgba(11,18,32,.04);text-decoration:none}
+      .links a{width:100%}
     }
 
-    /* Scroll lock helper */
+    /* Scroll lock when menu open on mobile */
     body.nav-locked{overflow:hidden}
   </style>
 </head>
@@ -215,13 +228,17 @@
   <button class="navToggle" type="button" aria-controls="primaryNavDe" aria-expanded="false">
     <span class="sr-only">Menü öffnen</span>
 
-    <svg class="iconHamburger" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-      <path d="M4 6h16M4 12h16M4 18h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-    </svg>
+    <span class="icon icon--hamburger" aria-hidden="true">
+      <svg viewBox="0 0 24 24" focusable="false">
+        <path d="M4 6h16M4 12h16M4 18h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </span>
 
-    <svg class="iconClose" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-      <path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-    </svg>
+    <span class="icon icon--close" aria-hidden="true">
+      <svg viewBox="0 0 24 24" focusable="false">
+        <path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+    </span>
   </button>
 
   <nav class="links" id="primaryNavDe" aria-label="Hauptnavigation">
@@ -372,6 +389,14 @@
 <script>
   document.getElementById("y").textContent = new Date().getFullYear();
 
+  // Sticky header shadow on scroll
+  (function(){
+    const header = document.getElementById("siteNavDe");
+    const onScroll = () => header.classList.toggle("is-scrolled", window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, {passive:true});
+  })();
+
   // Burger menu (accessible) + close on scroll + scroll lock
   (function(){
     const header = document.getElementById("siteNavDe");
@@ -427,40 +452,43 @@
   })();
 
   // Active nav
-  const sections = document.querySelectorAll("section[id]");
-  const links = document.querySelectorAll(".links a[href^='#']");
-  const observer = new IntersectionObserver(entries=>{
-    entries.forEach(e=>{
-      if(e.isIntersecting){
-        links.forEach(l=>l.classList.toggle("active", l.getAttribute("href")==="#"+e.target.id));
-      }
-    });
-  },{threshold:.6});
-  sections.forEach(s=>observer.observe(s));
+  (function(){
+    const sections = document.querySelectorAll("section[id]");
+    const links = document.querySelectorAll(".links a[href^='#']");
+    const observer = new IntersectionObserver(entries=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          links.forEach(l=>l.classList.toggle("active", l.getAttribute("href")==="#"+e.target.id));
+        }
+      });
+    },{threshold:.6});
+    sections.forEach(s=>observer.observe(s));
+  })();
 
   // Contact form (no backend): validate + open mail draft
-  const formDe = document.getElementById("contactFormDe");
-  const statusDe = document.getElementById("statusDe");
+  (function(){
+    const formDe = document.getElementById("contactFormDe");
+    const statusDe = document.getElementById("statusDe");
 
-  formDe.addEventListener("submit", (ev) => {
-    ev.preventDefault();
+    formDe.addEventListener("submit", (ev) => {
+      ev.preventDefault();
 
-    const hp = document.getElementById("companyDe");
-    if (hp && hp.value.trim() !== "") return;
+      const hp = document.getElementById("companyDe");
+      if (hp && hp.value.trim() !== "") return;
 
-    const name = document.getElementById("nameDe").value.trim();
-    const email = document.getElementById("emailDe").value.trim();
-    const topic = document.getElementById("topicDe").value.trim();
-    const msg = document.getElementById("msgDe").value.trim();
+      const name = document.getElementById("nameDe").value.trim();
+      const email = document.getElementById("emailDe").value.trim();
+      const topic = document.getElementById("topicDe").value.trim();
+      const msg = document.getElementById("msgDe").value.trim();
 
-    if (!email || !msg) {
-      statusDe.dataset.show = "true";
-      statusDe.textContent = "Bitte E-Mail und Nachricht ausfüllen.";
-      return;
-    }
+      if (!email || !msg) {
+        statusDe.dataset.show = "true";
+        statusDe.textContent = "Bitte E-Mail und Nachricht ausfüllen.";
+        return;
+      }
 
-    const subject = topic ? `Anfrage: ${topic}` : "Anfrage über Website";
-    const bodyText =
+      const subject = topic ? `Anfrage: ${topic}` : "Anfrage über Website";
+      const body =
 `Name: ${name || "-"}
 E-Mail: ${email}
 Thema: ${topic || "-"} 
@@ -468,12 +496,13 @@ Thema: ${topic || "-"}
 Nachricht:
 ${msg}`;
 
-    statusDe.dataset.show = "true";
-    statusDe.textContent = "Danke! Ich öffne jetzt einen E-Mail-Entwurf…";
+      statusDe.dataset.show = "true";
+      statusDe.textContent = "Danke! Ich öffne jetzt einen E-Mail-Entwurf…";
 
-    const mailto = `mailto:hello@flepaco.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyText)}`;
-    window.location.href = mailto;
-  });
+      const mailto = `mailto:hello@flepaco.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      window.location.href = mailto;
+    });
+  })();
 </script>
 </body>
 </html>
