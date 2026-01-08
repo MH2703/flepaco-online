@@ -431,3 +431,13 @@ body.nav-locked{ overflow:hidden; }
   h1{ font-size:28px; }
   h2{ font-size:22px; }
 }
+
+/* Subtle shadow when scrolling */
+.nav{
+  transition: box-shadow .18s ease, background .18s ease;
+}
+
+.nav.is-scrolled{
+  box-shadow: 0 6px 18px rgba(11,18,32,.08);
+  background: rgba(244,246,251,.94);
+}
