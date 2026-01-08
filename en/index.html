@@ -13,134 +13,33 @@
 
   <style>
     html{ scroll-behavior:smooth; }
-
-    /* Global anchor offset for fixed/sticky nav */
     :root{ scroll-padding-top:110px; }
 
-    /* Skip link (keyboard accessibility) */
-    .skip-link{
-      position:absolute;
-      left:12px;
-      top:12px;
-      padding:10px 12px;
-      border-radius:12px;
-      background:rgba(255,255,255,.95);
-      border:1px solid rgba(11,18,32,.12);
-      box-shadow:0 10px 28px rgba(11,18,32,.08);
-      color:inherit;
-      text-decoration:none;
-      transform:translateY(-140%);
-      transition:transform .15s ease;
-      z-index:9999;
-    }
-    .skip-link:focus{ transform:translateY(0); }
-
-    /* Focus / Accessibility */
-    a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible{
-      outline:3px solid rgba(20,184,166,.35);
-      outline-offset:3px;
-      border-radius:10px;
-    }
-
-    /* Scroll Snap – desktop only + only if user allows motion */
     @media (min-width:900px) and (prefers-reduced-motion: no-preference){
       body{ scroll-snap-type:y proximity; overflow-y:scroll; }
-      .page{ scroll-snap-align:start; scroll-snap-stop:normal; }
+      .page{ scroll-snap-align:start; }
       #contact{ scroll-snap-align:none; }
     }
 
-    .page{
-      scroll-margin-top:110px;
-      padding:64px 0;
-      position:relative;
-    }
-
+    .page{ padding:64px 0; position:relative; }
     .page:not(#top)::before{
-      content:"";
-      position:absolute;
-      top:0; left:0; right:0;
-      height:1px;
-      background:linear-gradient(to right, transparent, rgba(11,18,32,.10), transparent);
+      content:""; position:absolute; top:0; left:0; right:0; height:1px;
+      background:linear-gradient(to right, transparent, rgba(0,0,0,.1), transparent);
     }
 
-    /* Active navigation */
-    .links a[href^="#"]{ position:relative; }
-    .links a.active::after{
-      content:"";
-      position:absolute;
-      left:12px; right:12px; bottom:6px;
-      height:2px;
-      background:var(--brand);
-      border-radius:2px;
-    }
-
-    /* Chapter headers */
-    .chapter{ margin-bottom:20px; }
-    .chapter .num{
-      font-size:12px;
-      letter-spacing:2.4px;
-      font-weight:800;
-      color:rgba(11,18,32,.45);
-      text-transform:uppercase;
-    }
-    .chapter h2{
-      margin:6px 0 0;
-      padding-bottom:10px;
-      border-bottom:1px solid rgba(11,18,32,.10);
-    }
-
-    /* Hero */
-    .hero h1{ max-width:24ch; margin-bottom:14px; }
+    .hero h1{ max-width:24ch; }
     .hero p{ max-width:66ch; font-size:18px; line-height:1.6; }
 
-    /* Cards */
     .card{
-      padding:26px;
-      border-radius:20px;
-      box-shadow:0 14px 34px rgba(11,18,32,.08);
+      padding:26px; border-radius:20px;
+      box-shadow:0 14px 34px rgba(0,0,0,.08);
     }
 
-    /* Read more (accessible: use hidden attribute) */
-    .more{ margin-top:10px; }
-    .more[hidden]{ display:none; }
-
-    .toggle{
-      margin-top:10px;
-      background:none;
-      border:none;
-      color:var(--brand);
-      font-weight:600;
-      cursor:pointer;
-    }
-
-    /* Form */
-    form{ max-width:520px; }
-    label{ display:block; margin-top:14px; font-weight:600; }
-    input, textarea{
-      width:100%;
-      padding:12px 14px;
-      margin-top:6px;
-      border-radius:12px;
-      border:1px solid var(--line);
-      font-family:inherit;
-      font-size:16px;
-    }
-    textarea{ min-height:120px; resize:vertical; }
-
-    .footer{
-      margin-top:44px;
-      padding-top:18px;
-      border-top:1px solid rgba(11,18,32,.10);
-    }
-
-    @media(max-width:600px){
-      :root{ scroll-padding-top:90px; }
-    }
+    .footer{ margin-top:44px; padding-top:18px; border-top:1px solid rgba(0,0,0,.1); }
   </style>
 </head>
 
 <body>
-<a class="skip-link" href="#top">Skip to content</a>
 
 <div class="wrap">
 
@@ -150,8 +49,9 @@
       <img src="/flepaco-online/assets/logo.svg" alt="FLEPACO">
     </a>
   </div>
-  <nav class="links" aria-label="Primary navigation">
+  <nav class="links">
     <a href="#top">Home</a>
+    <a href="#why">Why</a>
     <a href="#services">Services</a>
     <a href="#process">Process</a>
     <a href="#contact">Contact</a>
@@ -160,158 +60,67 @@
 </header>
 
 <!-- HERO -->
-<section id="top" class="hero page" aria-label="Home">
+<section id="top" class="hero page">
   <div class="card">
     <h1>Flexible Packaging Consulting</h1>
     <p class="muted">
-      Independent consulting for confident decisions
+      Independent consulting for brand owners, converters and machine manufacturers –
+      for robust material decisions, clear specifications and faster industrialisation
       from concept to production.
     </p>
+    <a href="#contact" class="btn primary" style="margin-top:18px;">Free initial call</a>
+  </div>
+</section>
+
+<!-- WHY -->
+<section id="why" class="page">
+  <div class="chapter"><div class="num">01</div><h2>Why FLEPACO?</h2></div>
+
+  <div class="grid3">
+    <div class="card">
+      <h3>Independent</h3>
+      <p class="muted">
+        Recommendations without supplier ties.
+        Decisions based on requirements, data and feasibility.
+      </p>
+    </div>
+    <div class="card">
+      <h3>Practical</h3>
+      <p class="muted">
+        Focused on real processes, testing and approvals.
+        Concepts work in everyday industrial environments.
+      </p>
+    </div>
+    <div class="card">
+      <h3>Structured</h3>
+      <p class="muted">
+        Clear decision frameworks,
+        solid specifications and transparent documentation.
+      </p>
+    </div>
   </div>
 </section>
 
 <!-- SERVICES -->
-<section id="services" class="page" aria-label="Services">
-  <div class="chapter">
-    <div class="num">01</div>
-    <h2>Services</h2>
-  </div>
-
-  <div class="grid3">
-    <div class="card">
-      <h3>Analysis &amp; Consulting</h3>
-      <p class="muted">Structured evaluation of technical options.</p>
-
-      <div class="more" id="more-1" hidden>
-        <p class="muted">
-          Market comparison, feasibility studies,
-          risk and cost assessment.
-        </p>
-      </div>
-
-      <button class="toggle" type="button" aria-expanded="false" aria-controls="more-1">
-        Read more
-      </button>
-    </div>
-
-    <div class="card">
-      <h3>Materials &amp; Specifications</h3>
-      <p class="muted">Design of materials and barrier concepts.</p>
-
-      <div class="more" id="more-2" hidden>
-        <p class="muted">
-          Sealing performance, migration,
-          recyclability and regulatory requirements.
-        </p>
-      </div>
-
-      <button class="toggle" type="button" aria-expanded="false" aria-controls="more-2">
-        Read more
-      </button>
-    </div>
-
-    <div class="card">
-      <h3>Project Support</h3>
-      <p class="muted">Support up to production approval.</p>
-
-      <div class="more" id="more-3" hidden>
-        <p class="muted">
-          Supplier coordination, testing,
-          approvals and industrialisation.
-        </p>
-      </div>
-
-      <button class="toggle" type="button" aria-expanded="false" aria-controls="more-3">
-        Read more
-      </button>
-    </div>
-  </div>
+<section id="services" class="page">
+  <div class="chapter"><div class="num">02</div><h2>Services</h2></div>
 </section>
 
 <!-- PROCESS -->
-<section id="process" class="page" aria-label="Process">
-  <div class="chapter">
-    <div class="num">02</div>
-    <h2>Process</h2>
-  </div>
-
-  <div class="grid3">
-    <div class="card"><h3>1. Initial discussion</h3><p class="muted">Objectives &amp; scope.</p></div>
-    <div class="card"><h3>2. Recommendation</h3><p class="muted">Options &amp; evaluation.</p></div>
-    <div class="card"><h3>3. Implementation</h3><p class="muted">Testing &amp; rollout.</p></div>
-  </div>
+<section id="process" class="page">
+  <div class="chapter"><div class="num">03</div><h2>Process</h2></div>
 </section>
 
 <!-- CONTACT -->
-<section id="contact" class="page" aria-label="Contact">
-  <div class="chapter">
-    <div class="num">03</div>
-    <h2>Contact</h2>
-  </div>
-
-  <div class="card">
-    <form>
-      <label for="name">Name</label>
-      <input id="name" type="text" placeholder="Your name" autocomplete="name">
-
-      <label for="email">Email</label>
-      <input id="email" type="email" placeholder="name@company.com" autocomplete="email">
-
-      <label for="msg">Message</label>
-      <textarea id="msg" placeholder="Briefly describe your request"></textarea>
-
-      <button type="submit" class="btn primary" style="margin-top:16px;">
-        Send enquiry
-      </button>
-
-      <p class="muted" style="margin-top:10px;font-size:14px;">
-        Note: Form currently without backend (prepared for WordPress).
-      </p>
-    </form>
-  </div>
-
-  <div class="footer">
-    © <span id="y"></span> FLEPACO ·
-    <a href="/flepaco-online/impressum.html">Imprint</a> ·
-    <a href="/flepaco-online/datenschutz.html">Privacy</a>
-  </div>
+<section id="contact" class="page">
+  <div class="chapter"><div class="num">04</div><h2>Contact</h2></div>
+  <div class="footer">© <span id="y"></span> FLEPACO</div>
 </section>
 
 </div>
 
 <script>
-  // Year
-  document.getElementById("y").textContent = new Date().getFullYear();
-
-  // Active navigation (one observer, observe all sections)
-  const sections = document.querySelectorAll("section[id]");
-  const links = document.querySelectorAll(".links a[href^='#']");
-
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        links.forEach(l => {
-          l.classList.toggle("active", l.getAttribute("href") === "#" + e.target.id);
-        });
-      }
-    });
-  }, { threshold: 0.6 });
-
-  sections.forEach(s => observer.observe(s));
-
-  // Read more toggle (accessible)
-  document.querySelectorAll(".toggle").forEach(btn => {
-    btn.addEventListener("click", () => {
-      const targetId = btn.getAttribute("aria-controls");
-      const more = document.getElementById(targetId);
-      const isOpen = btn.getAttribute("aria-expanded") === "true";
-
-      btn.setAttribute("aria-expanded", String(!isOpen));
-      more.hidden = isOpen;
-
-      btn.textContent = isOpen ? "Read more" : "Read less";
-    });
-  });
+document.getElementById("y").textContent=new Date().getFullYear();
 </script>
 </body>
 </html>
