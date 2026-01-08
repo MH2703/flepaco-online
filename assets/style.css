@@ -4,30 +4,41 @@
 
 /* Design Tokens */
 :root{
-  --bg:#f4f6fb;                 /* Hintergrund wie Startseite */
-  --text:#0b1220;               /* Primärer Text */
-  --muted:#5f6b86;              /* Sekundärer Text */
-  --line:rgba(11,18,32,.12);    /* Linien / Rahmen */
-  --brand:#14b8a6;              /* Akzentfarbe */
+  --bg:#f4f6fb;
+  --text:#0b1220;
+  --muted:#5f6b86;
+  --line:rgba(11,18,32,.12);
+  --brand:#14b8a6;
   --shadow:0 10px 28px rgba(11,18,32,.08);
 }
 
 /* Reset & Base */
-*{
-  box-sizing:border-box;
-}
+*{ box-sizing:border-box; }
 
 html, body{
   margin:0;
   padding:0;
 }
 
+html{ scroll-behavior:smooth; }
+
 body{
-  font-family: system-ui,-apple-system,Segoe UI,Roboto,Arial;
-  background: var(--bg);
-  color: var(--text);
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
+  background:var(--bg);
+  color:var(--text);
   line-height:1.6;
   font-size:16px;
+}
+
+/* Focus (Accessibility) */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible{
+  outline:3px solid rgba(20,184,166,.35);
+  outline-offset:3px;
+  border-radius:10px;
 }
 
 /* =========================
@@ -41,41 +52,22 @@ body{
 }
 
 /* =========================
-   Navigation
+   Typography
    ========================= */
 
-.nav{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:24px;
-  padding:12px 0 28px;
+h1, h2, h3{
+  margin:0 0 12px;
+  line-height:1.25;
+  letter-spacing:-.01em;
 }
 
-.brand img{
-  height:42px;
-  width:auto;
-  display:block;
-}
+h1{ font-size:34px; font-weight:700; }
+h2{ font-size:24px; font-weight:700; }
+h3{ font-size:18px; font-weight:700; }
 
-.links{
-  display:flex;
-  align-items:center;
-  gap:14px;
-  flex-wrap:wrap;
-}
+p{ margin:0 0 14px; }
 
-.links a{
-  color:var(--text);
-  text-decoration:none;
-  font-weight:600;
-  padding:8px 12px;
-  border-radius:10px;
-}
-
-.links a:hover{
-  background:rgba(255,255,255,.7);
-}
+.muted{ color:var(--muted); }
 
 /* =========================
    Buttons
@@ -110,49 +102,6 @@ body{
 }
 
 /* =========================
-   Typography
-   ========================= */
-
-h1, h2, h3{
-  margin:0 0 12px;
-  line-height:1.25;
-}
-
-h1{
-  font-size:34px;
-  font-weight:700;
-}
-
-h2{
-  font-size:24px;
-  font-weight:700;
-}
-
-h3{
-  font-size:18px;
-  font-weight:700;
-}
-
-p{
-  margin:0 0 14px;
-}
-
-.muted{
-  color:var(--muted);
-}
-
-/* =========================
-   Hero / Sections
-   ========================= */
-
-.hero{
-  display:grid;
-  grid-template-columns: 1.2fr .8fr;
-  gap:24px;
-  margin-bottom:32px;
-}
-
-/* =========================
    Cards
    ========================= */
 
@@ -167,6 +116,13 @@ p{
    Grids
    ========================= */
 
+.grid2{
+  display:grid;
+  grid-template-columns: 1.15fr .85fr;
+  gap:22px;
+  align-items:stretch;
+}
+
 .grid3{
   display:grid;
   grid-template-columns: repeat(3, 1fr);
@@ -174,7 +130,197 @@ p{
 }
 
 /* =========================
-   Footer (DE / EN)
+   Hero / Sections
+   ========================= */
+
+.hero{
+  display:grid;
+  grid-template-columns: 1.2fr .8fr;
+  gap:24px;
+  margin-bottom:32px;
+}
+
+/* One-Page sections */
+.page{
+  min-height:calc(100vh - 92px); /* sticky header height */
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding:56px 0;
+  scroll-margin-top:100px; /* anchors */
+}
+
+.page .card{ margin-top:10px; }
+
+/* =========================
+   Navigation (Sticky + Desktop)
+   ========================= */
+
+/* Sticky Header wrapper */
+.nav{
+  position:sticky;
+  top:0;
+  z-index:2000;
+
+  background:rgba(244,246,251,.86);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+
+  border-bottom:1px solid var(--line);
+  margin:0 0 12px;
+}
+
+/* Inner layout */
+.nav{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:24px;
+  padding:12px 0;
+}
+
+.brand img{
+  height:42px;
+  width:auto;
+  display:block;
+}
+
+.links{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  flex-wrap:wrap;
+}
+
+.links a{
+  color:var(--text);
+  text-decoration:none;
+  font-weight:600;
+  padding:8px 12px;
+  border-radius:10px;
+}
+
+.links a:hover{
+  background:rgba(255,255,255,.7);
+}
+
+/* Active section marker (optional, used by your JS) */
+.links a.active{
+  position:relative;
+}
+.links a.active::after{
+  content:"";
+  position:absolute;
+  left:12px;
+  right:12px;
+  bottom:4px;
+  height:2px;
+  background:var(--brand);
+  border-radius:2px;
+}
+
+/* =========================
+   Mobile Navigation (Burger)
+   ========================= */
+
+/* Hidden by default (desktop) */
+.navToggle{
+  display:none;
+  margin-left:auto;
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.92);
+  border-radius:12px;
+  width:44px;
+  height:40px;
+  padding:0;
+  cursor:pointer;
+  -webkit-tap-highlight-color:transparent;
+  position:relative;
+  align-items:center;
+  justify-content:center;
+}
+
+.navToggle .sr-only{
+  position:absolute;
+  width:1px;height:1px;
+  padding:0;margin:-1px;
+  overflow:hidden;
+  clip:rect(0,0,0,0);
+  white-space:nowrap;
+  border:0;
+}
+
+/* Robust icon swap (your HTML uses .icon--hamburger / .icon--close) */
+.navToggle .icon{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  opacity:0;
+  transition:opacity .12s ease;
+  pointer-events:none;
+}
+
+.navToggle .icon--hamburger{ opacity:1; }
+.nav.is-open .navToggle .icon--hamburger{ opacity:0; }
+.nav.is-open .navToggle .icon--close{ opacity:1; }
+
+.navToggle svg{
+  width:22px;
+  height:22px;
+  display:block;
+}
+
+/* Mobile menu panel */
+@media(max-width:900px){
+  .hero{ grid-template-columns:1fr; }
+
+  .grid2{ grid-template-columns:1fr; }
+  .grid3{ grid-template-columns:1fr; }
+
+  .navToggle{
+    display:inline-flex;
+  }
+
+  /* Hide desktop links, show as dropdown panel when open */
+  .links{
+    display:none;
+    position:absolute;
+    left:0;
+    right:0;
+    top:100%;
+    margin-top:10px;
+    padding:10px;
+    background:rgba(255,255,255,.96);
+    border:1px solid var(--line);
+    border-radius:16px;
+    box-shadow:0 16px 40px rgba(11,18,32,.10);
+    z-index:2500;
+  }
+
+  .nav.is-open .links{
+    display:flex;
+    flex-direction:column;
+    gap:6px;
+    align-items:stretch;
+  }
+
+  .links a{
+    width:100%;
+    padding:12px 12px;
+    border-radius:12px;
+  }
+  .links a:hover{
+    background:rgba(11,18,32,.04);
+  }
+}
+
+/* Scroll lock helper (JS toggles this on body) */
+body.nav-locked{ overflow:hidden; }
+
+/* =========================
+   Footer
    ========================= */
 
 .footer{
@@ -196,99 +342,8 @@ p{
 }
 
 /* =========================
-   Responsive
+   Profile / About
    ========================= */
-
-@media(max-width:900px){
-  .hero{
-    grid-template-columns:1fr;
-  }
-}
-
-@media(max-width:600px){
-  .wrap{
-    padding:18px;
-  }
-
-  h1{
-    font-size:28px;
-  }
-
-  h2{
-    font-size:22px;
-  }
-
-  .grid3{
-    grid-template-columns:1fr;
-  }
-
-  .nav{
-    flex-direction:column;
-    align-items:flex-start;
-    gap:12px;
-  }
-
-  .links{
-    width:100%;
-  }
-}
-/* =========================
-   One-Page "Full Section" Layout
-   ========================= */
-
-html{
-  scroll-behavior:smooth;
-}
-
-/* Header bleibt oben sichtbar */
-.nav{
-  position:sticky;
-  top:0;
-  z-index:50;
-
-  /* passt zur Startseite */
-  background:rgba(244,246,251,.86);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-
-  /* kleiner Rahmen, damit er sich abhebt */
-  border-bottom:1px solid var(--line);
-  margin:0 0 12px;
-  padding:12px 0;
-}
-
-/* Jede Sektion fühlt sich wie "eine Seite" an */
-.page{
-  min-height:calc(100vh - 92px); /* 92px = grob Headerhöhe */
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  padding:56px 0;
-}
-
-/* Damit Sprungmarken nicht unter dem sticky Header landen */
-.page{
-  scroll-margin-top:100px;
-}
-
-/* Optional: etwas mehr Ruhe zwischen Cards in einer Sektion */
-.page .card{
-  margin-top:10px;
-}
-/* =========================
-   Profile / About section
-   ========================= */
-
-.grid2{
-  display:grid;
-  grid-template-columns: 1.15fr .85fr;
-  gap:22px;
-  align-items:stretch;
-}
-
-@media (max-width:900px){
-  .grid2{ grid-template-columns:1fr; }
-}
 
 .profile-card{
   display:flex;
@@ -330,4 +385,17 @@ html{
   border:1px solid var(--line);
   background:rgba(255,255,255,.75);
   font-size:13px;
+}
+
+/* =========================
+   Small screens
+   ========================= */
+
+@media(max-width:600px){
+  .wrap{ padding:18px; }
+
+  h1{ font-size:28px; }
+  h2{ font-size:22px; }
+
+  /* Important: no column-nav here (burger handles it) */
 }
