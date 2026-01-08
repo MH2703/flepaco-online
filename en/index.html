@@ -15,6 +15,29 @@
     html{scroll-behavior:smooth}
     :root{scroll-padding-top:110px}
 
+    /* --- Small design polish (typo/spacing/shadows) --- */
+    .wrap{max-width:980px;margin:0 auto}
+    h1,h2,h3{line-height:1.18;letter-spacing:-.01em}
+    p{line-height:1.65}
+    .muted{line-height:1.65}
+
+    .card{
+      padding:26px;
+      border-radius:20px;
+      background:rgba(255,255,255,.88);
+      border:1px solid rgba(11,18,32,.10);
+      box-shadow:0 10px 26px rgba(11,18,32,.07);
+      transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
+    }
+    .card:hover{
+      transform:translateY(-1px);
+      box-shadow:0 14px 34px rgba(11,18,32,.10);
+      background:rgba(255,255,255,.93);
+    }
+    @media (hover:none){
+      .card:hover{transform:none;box-shadow:0 10px 26px rgba(11,18,32,.07);background:rgba(255,255,255,.88);}
+    }
+
     .skip-link{
       position:absolute;left:12px;top:12px;
       padding:10px 12px;border-radius:12px;
@@ -23,7 +46,7 @@
     }
     .skip-link:focus{transform:translateY(0)}
 
-    a:focus-visible,button:focus-visible{
+    a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{
       outline:3px solid rgba(20,184,166,.35);
       outline-offset:3px;border-radius:10px
     }
@@ -37,7 +60,7 @@
     .page{padding:64px 0;position:relative}
     .page:not(#top)::before{
       content:"";position:absolute;top:0;left:0;right:0;height:1px;
-      background:linear-gradient(to right,transparent,rgba(0,0,0,.1),transparent)
+      background:linear-gradient(to right,transparent,rgba(0,0,0,.10),transparent)
     }
 
     .links a[href^="#"]{position:relative}
@@ -49,14 +72,52 @@
     .chapter{margin-bottom:20px}
     .chapter .num{font-size:12px;letter-spacing:2.4px;font-weight:800;color:rgba(0,0,0,.45)}
 
-    .hero h1{max-width:24ch}
+    .hero h1{max-width:24ch;margin-bottom:10px}
     .hero p{max-width:66ch;font-size:18px;line-height:1.6}
 
-    .card{padding:26px;border-radius:20px;box-shadow:0 14px 34px rgba(0,0,0,.08)}
-
-    .footer{margin-top:44px;padding-top:18px;border-top:1px solid rgba(0,0,0,.1)}
+    .footer{margin-top:44px;padding-top:18px;border-top:1px solid rgba(0,0,0,.10)}
     .contact-meta{margin-top:14px;font-size:14px}
-    .contact-meta a{color:inherit;text-decoration:none;font-weight:600}
+    .contact-meta a{color:inherit;text-decoration:none;font-weight:650}
+    .contact-meta a:hover{text-decoration:underline}
+
+    /* Grids (ensure available even if not in style.css) */
+    .grid2{display:grid;grid-template-columns:1.15fr .85fr;gap:22px;align-items:stretch}
+    @media(max-width:900px){.grid2{grid-template-columns:1fr}}
+    .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+    @media(max-width:900px){.grid3{grid-template-columns:1fr}}
+
+    /* Lists */
+    ul.muted{margin:12px 0 0;padding-left:18px;line-height:1.7}
+    ul.muted li{margin:6px 0}
+
+    /* Contact form (professional, no backend) */
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    @media(max-width:700px){.form-row{grid-template-columns:1fr}}
+    label{display:block;font-weight:700;margin-top:14px}
+    .hint{display:block;margin-top:6px;font-size:13px;color:rgba(11,18,32,.60);line-height:1.4}
+    input,textarea{
+      width:100%;
+      margin-top:8px;
+      padding:12px 14px;
+      border-radius:12px;
+      border:1px solid rgba(11,18,32,.14);
+      background:rgba(255,255,255,.92);
+      font-family:inherit;
+      font-size:16px;
+    }
+    textarea{min-height:140px;resize:vertical}
+    .form-actions{margin-top:16px;display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+    .form-note{margin-top:10px;font-size:13px;color:rgba(11,18,32,.60)}
+    .status{
+      margin-top:12px;
+      padding:12px 14px;
+      border-radius:14px;
+      border:1px solid rgba(20,184,166,.28);
+      background:rgba(20,184,166,.08);
+      display:none;
+    }
+    .status[data-show="true"]{display:block}
+    .hp{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
   </style>
 </head>
 
@@ -71,7 +132,7 @@
       <img src="/flepaco-online/assets/logo.svg" alt="FLEPACO">
     </a>
   </div>
-  <nav class="links">
+  <nav class="links" aria-label="Primary navigation">
     <a href="#top">Home</a>
     <a href="#why">Why</a>
     <a href="#profile">Profile</a>
@@ -83,7 +144,7 @@
 </header>
 
 <!-- HERO -->
-<section id="top" class="hero page">
+<section id="top" class="hero page" aria-label="Home">
   <div class="card">
     <h1>Flexible Packaging Consulting</h1>
     <p class="muted">
@@ -102,7 +163,7 @@
 </section>
 
 <!-- WHY -->
-<section id="why" class="page">
+<section id="why" class="page" aria-label="Why FLEPACO">
   <div class="chapter"><div class="num">01</div><h2>Why FLEPACO?</h2></div>
 
   <div class="grid3">
@@ -117,7 +178,7 @@
     <div class="card">
       <h3>Practical</h3>
       <p class="muted">
-        Focus on real processes, testing and approvals.
+        Focused on real processes, testing and approvals.
         Concepts work in everyday industrial environments.
       </p>
     </div>
@@ -132,7 +193,7 @@
 </section>
 
 <!-- PROFILE -->
-<section id="profile" class="page">
+<section id="profile" class="page" aria-label="Profile">
   <div class="chapter"><div class="num">02</div><h2>Profile</h2></div>
 
   <div class="grid2">
@@ -143,10 +204,10 @@
         at the interface of materials, process and specifications.
       </p>
       <p class="muted">
-        I support robust decisions from early concept to production approval.
-        The focus is on feasibility, testing and clear documentation.
+        I support robust decisions from early concept to production approval –
+        with a strong focus on feasibility, testing and clear documentation.
       </p>
-      <div class="signature">
+      <div class="signature" style="margin-top:14px;padding-top:14px;border-top:1px solid rgba(0,0,0,.08);display:flex;gap:10px;flex-wrap:wrap;align-items:center;">
         <strong>[Name]</strong>
         <span class="muted">Flexible Packaging Consultant</span>
       </div>
@@ -165,8 +226,8 @@
   </div>
 </section>
 
-<!-- SERVICES -->
-<section id="services" class="page">
+<!-- SERVICES (OUTCOME) -->
+<section id="services" class="page" aria-label="Services">
   <div class="chapter"><div class="num">03</div><h2>Services</h2></div>
 
   <div class="grid3">
@@ -200,29 +261,141 @@
 </section>
 
 <!-- PROCESS -->
-<section id="process" class="page">
+<section id="process" class="page" aria-label="Process">
   <div class="chapter"><div class="num">04</div><h2>Process</h2></div>
+
   <div class="grid3">
-    <div class="card"><h3>1. Initial discussion</h3><p class="muted">Objectives &amp; scope.</p></div>
+    <div class="card"><h3>1. Initial discussion</h3><p class="muted">Objectives, scope &amp; context.</p></div>
     <div class="card"><h3>2. Recommendation</h3><p class="muted">Options, evaluation &amp; approach.</p></div>
     <div class="card"><h3>3. Implementation</h3><p class="muted">Testing, approvals &amp; rollout.</p></div>
   </div>
 </section>
 
-<!-- CONTACT -->
-<section id="contact" class="page">
+<!-- CONTACT (PRO, NO BACKEND) -->
+<section id="contact" class="page" aria-label="Contact">
   <div class="chapter"><div class="num">05</div><h2>Contact</h2></div>
-  <div class="footer">
-    © <span id="y"></span> FLEPACO ·
-    <a href="/flepaco-online/impressum.html">Imprint</a> ·
-    <a href="/flepaco-online/datenschutz.html">Privacy</a>
+
+  <div class="grid2">
+    <div class="card">
+      <h3>Send an enquiry</h3>
+      <p class="muted" style="margin-top:10px;">
+        Share a short context – I’ll get back with suggested next steps.
+      </p>
+
+      <form id="contactFormEn" novalidate>
+        <!-- Honeypot -->
+        <div class="hp" aria-hidden="true">
+          <label for="companyEn">Company</label>
+          <input id="companyEn" name="company" type="text" tabindex="-1" autocomplete="off">
+        </div>
+
+        <div class="form-row">
+          <div>
+            <label for="nameEn">Name</label>
+            <input id="nameEn" name="name" type="text" autocomplete="name" required placeholder="Your name">
+            <span class="hint">Optional: first and last name</span>
+          </div>
+
+          <div>
+            <label for="emailEn">Email</label>
+            <input id="emailEn" name="email" type="email" autocomplete="email" required placeholder="name@company.com">
+            <span class="hint">For questions and scheduling</span>
+          </div>
+        </div>
+
+        <label for="topicEn">Topic</label>
+        <input id="topicEn" name="topic" type="text" autocomplete="off" placeholder="e.g. specification, barrier, recyclability…">
+
+        <label for="msgEn">Message</label>
+        <textarea id="msgEn" name="message" required placeholder="Briefly describe your request"></textarea>
+
+        <div class="form-actions">
+          <button type="submit" class="btn primary">Send enquiry</button>
+          <a class="btn" href="mailto:hello@flepaco.com?subject=Website%20enquiry">Send an email</a>
+        </div>
+
+        <div class="status" id="statusEn" role="status" aria-live="polite"></div>
+
+        <p class="form-note">
+          Note: This form currently has no server backend. On submit, an email draft will open.
+        </p>
+      </form>
+    </div>
+
+    <div class="card">
+      <h3>Direct contact</h3>
+      <p class="muted" style="margin-top:10px;">
+        <strong>Email:</strong> <a href="mailto:hello@flepaco.com">hello@flepaco.com</a><br>
+        <strong>Phone:</strong> <a href="tel:+49123456789">+49 123 456 789</a>
+      </p>
+      <p class="muted" style="margin-top:10px;">
+        <strong>Availability:</strong> Weekdays · Reply typically within 24–48 hours.
+      </p>
+
+      <div class="footer">
+        © <span id="y"></span> FLEPACO ·
+        <a href="/flepaco-online/impressum.html">Imprint</a> ·
+        <a href="/flepaco-online/datenschutz.html">Privacy</a>
+      </div>
+    </div>
   </div>
 </section>
 
 </div>
 
 <script>
-document.getElementById("y").textContent=new Date().getFullYear();
+  // Year
+  document.getElementById("y").textContent = new Date().getFullYear();
+
+  // Active nav
+  const sections = document.querySelectorAll("section[id]");
+  const links = document.querySelectorAll(".links a[href^='#']");
+  const observer = new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        links.forEach(l=>l.classList.toggle("active", l.getAttribute("href")==="#"+e.target.id));
+      }
+    });
+  },{threshold:.6});
+  sections.forEach(s=>observer.observe(s));
+
+  // Contact form (no backend): validate + open mail draft
+  const formEn = document.getElementById("contactFormEn");
+  const statusEn = document.getElementById("statusEn");
+
+  formEn.addEventListener("submit", (ev) => {
+    ev.preventDefault();
+
+    // Honeypot filled? silently stop
+    const hp = document.getElementById("companyEn");
+    if (hp && hp.value.trim() !== "") return;
+
+    const name = document.getElementById("nameEn").value.trim();
+    const email = document.getElementById("emailEn").value.trim();
+    const topic = document.getElementById("topicEn").value.trim();
+    const msg = document.getElementById("msgEn").value.trim();
+
+    if (!email || !msg) {
+      statusEn.dataset.show = "true";
+      statusEn.textContent = "Please fill in email and message.";
+      return;
+    }
+
+    const subject = topic ? `Enquiry: ${topic}` : "Website enquiry";
+    const body =
+`Name: ${name || "-"}
+Email: ${email}
+Topic: ${topic || "-"} 
+
+Message:
+${msg}`;
+
+    statusEn.dataset.show = "true";
+    statusEn.textContent = "Thanks! Opening an email draft…";
+
+    const mailto = `mailto:hello@flepaco.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = mailto;
+  });
 </script>
 </body>
 </html>
