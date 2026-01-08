@@ -15,7 +15,6 @@
     html{scroll-behavior:smooth}
     :root{scroll-padding-top:110px}
 
-    /* --- Calm premium polish (typo/spacing/shadows) --- */
     .wrap{max-width:980px;margin:0 auto}
     h1,h2,h3{line-height:1.18;letter-spacing:-.01em}
     h2{margin:6px 0 0}
@@ -81,17 +80,14 @@
     .contact-meta a{color:inherit;text-decoration:none;font-weight:650}
     .contact-meta a:hover{text-decoration:underline}
 
-    /* Grids */
     .grid2{display:grid;grid-template-columns:1.15fr .85fr;gap:22px;align-items:stretch}
     @media(max-width:900px){.grid2{grid-template-columns:1fr}}
     .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
     @media(max-width:900px){.grid3{grid-template-columns:1fr}}
 
-    /* Lists */
     ul.muted{margin:12px 0 0;padding-left:18px;line-height:1.7}
     ul.muted li{margin:6px 0}
 
-    /* Contact form */
     .form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
     @media(max-width:700px){.form-row{grid-template-columns:1fr}}
     label{display:block;font-weight:700;margin-top:14px}
@@ -140,8 +136,6 @@
       position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;
     }
     .navToggle svg{width:22px;height:22px;display:block}
-
-    /* icon state */
     .iconClose{display:none}
     .nav.is-open .iconHamburger{display:none}
     .nav.is-open .iconClose{display:block}
@@ -174,6 +168,9 @@
       }
       .links a:hover{background:rgba(11,18,32,.04);text-decoration:none}
     }
+
+    /* Scroll lock helper */
+    body.nav-locked{overflow:hidden}
   </style>
 </head>
 
@@ -192,12 +189,10 @@
   <button class="navToggle" type="button" aria-controls="primaryNavDe" aria-expanded="false">
     <span class="sr-only">Menü öffnen</span>
 
-    <!-- Hamburger -->
     <svg class="iconHamburger" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
       <path d="M4 6h16M4 12h16M4 18h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
     </svg>
 
-    <!-- Close (X) -->
     <svg class="iconClose" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
       <path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
     </svg>
@@ -214,7 +209,6 @@
   </nav>
 </header>
 
-<!-- HERO -->
 <section id="top" class="hero page" aria-label="Start">
   <div class="card">
     <h1>Flexible Packaging Consulting</h1>
@@ -223,9 +217,7 @@
       für sichere Materialentscheidungen, klare Spezifikationen und schnellere
       Industrialisierung von der Idee bis zur Serie.
     </p>
-    <a href="#kontakt" class="btn primary" style="margin-top:18px;">
-      Kostenloses Erstgespräch
-    </a>
+    <a href="#kontakt" class="btn primary" style="margin-top:18px;">Kostenloses Erstgespräch</a>
     <div class="contact-meta muted">
       oder direkt: <a href="mailto:hello@flepaco.com">hello@flepaco.com</a> ·
       <a href="tel:+49123456789">+49 123 456 789</a>
@@ -233,57 +225,26 @@
   </div>
 </section>
 
-<!-- WARUM -->
 <section id="why" class="page" aria-label="Warum FLEPACO">
   <div class="chapter"><div class="num">01</div><h2>Warum FLEPACO?</h2></div>
-
   <div class="grid3">
-    <div class="card">
-      <h3>Unabhängig</h3>
-      <p class="muted">
-        Empfehlungen ohne Lieferantenbindung.
-        Entscheidungen basieren auf Anforderungen,
-        Daten und Umsetzbarkeit.
-      </p>
-    </div>
-    <div class="card">
-      <h3>Praxisnah</h3>
-      <p class="muted">
-        Fokus auf reale Prozesse, Tests und Freigaben.
-        Konzepte funktionieren im industriellen Alltag.
-      </p>
-    </div>
-    <div class="card">
-      <h3>Strukturiert</h3>
-      <p class="muted">
-        Klare Entscheidungsgrundlagen,
-        saubere Spezifikationen und Dokumentation.
-      </p>
-    </div>
+    <div class="card"><h3>Unabhängig</h3><p class="muted">Empfehlungen ohne Lieferantenbindung. Entscheidungen basieren auf Anforderungen, Daten und Umsetzbarkeit.</p></div>
+    <div class="card"><h3>Praxisnah</h3><p class="muted">Fokus auf reale Prozesse, Tests und Freigaben. Konzepte funktionieren im industriellen Alltag.</p></div>
+    <div class="card"><h3>Strukturiert</h3><p class="muted">Klare Entscheidungsgrundlagen, saubere Spezifikationen und Dokumentation.</p></div>
   </div>
 </section>
 
-<!-- PROFIL -->
 <section id="profil" class="page" aria-label="Profil">
   <div class="chapter"><div class="num">02</div><h2>Profil</h2></div>
-
   <div class="grid2">
     <div class="card">
       <h3>Über mich</h3>
-      <p class="muted">
-        Hinter FLEPACO stehe ich als unabhängiger Berater für flexible Verpackungen –
-        an der Schnittstelle aus Material, Prozess und Spezifikation.
-      </p>
-      <p class="muted">
-        Ich begleite fundierte Entscheidungen von der ersten Idee bis zur Serienfreigabe –
-        mit Fokus auf Umsetzbarkeit, Tests und klarer Dokumentation.
-      </p>
+      <p class="muted">Hinter FLEPACO stehe ich als unabhängiger Berater für flexible Verpackungen – an der Schnittstelle aus Material, Prozess und Spezifikation.</p>
+      <p class="muted">Ich begleite fundierte Entscheidungen von der ersten Idee bis zur Serienfreigabe – mit Fokus auf Umsetzbarkeit, Tests und klarer Dokumentation.</p>
       <div class="signature" style="margin-top:14px;padding-top:14px;border-top:1px solid rgba(0,0,0,.08);display:flex;gap:10px;flex-wrap:wrap;align-items:center;">
-        <strong>[Name]</strong>
-        <span class="muted">Flexible Packaging Consultant</span>
+        <strong>[Name]</strong><span class="muted">Flexible Packaging Consultant</span>
       </div>
     </div>
-
     <div class="card">
       <h3>Schwerpunkte</h3>
       <ul class="muted">
@@ -297,44 +258,17 @@
   </div>
 </section>
 
-<!-- LEISTUNGEN -->
 <section id="leistungen" class="page" aria-label="Leistungen">
   <div class="chapter"><div class="num">03</div><h2>Leistungen</h2></div>
-
   <div class="grid3">
-    <div class="card">
-      <h3>Analyse &amp; Beratung</h3>
-      <p class="muted">
-        Entscheidungsgrundlagen für Material- und Prozessfragen:
-        strukturierter Optionenvergleich, Risiko- und Kostenbewertung
-        sowie klare Handlungsempfehlungen.
-      </p>
-    </div>
-
-    <div class="card">
-      <h3>Material &amp; Spezifikation</h3>
-      <p class="muted">
-        Ausarbeitung belastbarer Material- und Barrierekonzepte inklusive
-        Spezifikationen (KPIs, Toleranzen, Prüfmethoden)
-        für Ausschreibung, Tests und Serienfreigabe.
-      </p>
-    </div>
-
-    <div class="card">
-      <h3>Projektbegleitung</h3>
-      <p class="muted">
-        Strukturierte Begleitung von Trials bis zur Serie:
-        Testpläne, Musterfreigaben, Lieferantenabstimmung
-        und Unterstützung bis zur Industrialisierung.
-      </p>
-    </div>
+    <div class="card"><h3>Analyse &amp; Beratung</h3><p class="muted">Entscheidungsgrundlagen für Material- und Prozessfragen: strukturierter Optionenvergleich, Risiko- und Kostenbewertung sowie klare Handlungsempfehlungen.</p></div>
+    <div class="card"><h3>Material &amp; Spezifikation</h3><p class="muted">Ausarbeitung belastbarer Material- und Barrierekonzepte inklusive Spezifikationen (KPIs, Toleranzen, Prüfmethoden) für Ausschreibung, Tests und Serienfreigabe.</p></div>
+    <div class="card"><h3>Projektbegleitung</h3><p class="muted">Strukturierte Begleitung von Trials bis zur Serie: Testpläne, Musterfreigaben, Lieferantenabstimmung und Unterstützung bis zur Industrialisierung.</p></div>
   </div>
 </section>
 
-<!-- ABLAUF -->
 <section id="ablauf" class="page" aria-label="Ablauf">
   <div class="chapter"><div class="num">04</div><h2>Ablauf</h2></div>
-
   <div class="grid3">
     <div class="card"><h3>1. Erstgespräch</h3><p class="muted">Ziele, Rahmen &amp; Kontext.</p></div>
     <div class="card"><h3>2. Empfehlung</h3><p class="muted">Optionen, Bewertung &amp; Vorgehen.</p></div>
@@ -342,16 +276,13 @@
   </div>
 </section>
 
-<!-- KONTAKT -->
 <section id="kontakt" class="page" aria-label="Kontakt">
   <div class="chapter"><div class="num">05</div><h2>Kontakt</h2></div>
 
   <div class="grid2">
     <div class="card">
       <h3>Anfrage senden</h3>
-      <p class="muted" style="margin-top:10px;">
-        Kurz schildern – ich melde mich mit einem Vorschlag für die nächsten Schritte.
-      </p>
+      <p class="muted" style="margin-top:10px;">Kurz schildern – ich melde mich mit einem Vorschlag für die nächsten Schritte.</p>
 
       <form id="contactFormDe" novalidate>
         <div class="hp" aria-hidden="true">
@@ -365,7 +296,6 @@
             <input id="nameDe" name="name" type="text" autocomplete="name" placeholder="Ihr Name">
             <span class="hint">Optional</span>
           </div>
-
           <div>
             <label for="emailDe">E-Mail</label>
             <input id="emailDe" name="email" type="email" autocomplete="email" required placeholder="name@unternehmen.com">
@@ -414,27 +344,33 @@
 </div>
 
 <script>
-  // Year
   document.getElementById("y").textContent = new Date().getFullYear();
 
-  // Burger menu (accessible) + close on scroll
+  // Burger menu (accessible) + close on scroll + scroll lock
   (function(){
     const header = document.getElementById("siteNavDe");
     const btn = header.querySelector(".navToggle");
     const nav = document.getElementById("primaryNavDe");
+    const body = document.body;
 
+    function isMobile(){ return window.matchMedia("(max-width: 900px)").matches; }
     function isOpen(){ return header.classList.contains("is-open"); }
+
+    function lockScroll(lock){
+      if(!isMobile()) return; // only lock on mobile breakpoint
+      body.classList.toggle("nav-locked", lock);
+    }
 
     function setOpen(open){
       header.classList.toggle("is-open", open);
       btn.setAttribute("aria-expanded", String(open));
       btn.querySelector(".sr-only").textContent = open ? "Menü schließen" : "Menü öffnen";
+      lockScroll(open);
       if(open) nav.querySelector("a")?.focus();
     }
 
     btn.addEventListener("click", ()=> setOpen(!isOpen()));
 
-    // Close on escape
     document.addEventListener("keydown", (e)=>{
       if(e.key === "Escape" && isOpen()){
         setOpen(false);
@@ -442,23 +378,26 @@
       }
     });
 
-    // Close when clicking a link
     nav.addEventListener("click", (e)=>{
       const a = e.target.closest("a");
       if(!a) return;
       setOpen(false);
     });
 
-    // Close when clicking outside
     document.addEventListener("click", (e)=>{
       if(!isOpen()) return;
       if(header.contains(e.target)) return;
       setOpen(false);
     });
 
-    // Close on scroll (only if open; passive for performance)
     window.addEventListener("scroll", ()=>{
       if(isOpen()) setOpen(false);
+    }, {passive:true});
+
+    // If resized to desktop while open → close + unlock
+    window.addEventListener("resize", ()=>{
+      if(!isMobile() && isOpen()) setOpen(false);
+      if(!isMobile()) lockScroll(false);
     }, {passive:true});
   })();
 
