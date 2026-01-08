@@ -168,6 +168,9 @@ p{ margin:0 0 14px; }
 
   border-bottom:1px solid var(--line);
   margin:0 0 12px;
+
+  /* Subtle shadow transition when scrolling */
+  transition: box-shadow .18s ease, background .18s ease;
 }
 
 /* Inner layout (single-row, aligned) */
@@ -354,6 +357,20 @@ p{ margin:0 0 14px; }
 /* Scroll lock helper (JS toggles this on body) */
 body.nav-locked{ overflow:hidden; }
 
+/* Subtle shadow when scrolling (class toggled via JS) */
+.nav.is-scrolled{
+  box-shadow: 0 6px 18px rgba(11,18,32,.08);
+  background: rgba(244,246,251,.94);
+}
+
+/* Active section – refined underline (override) */
+.links a.active::after{
+  height:2px;
+  bottom:2px;
+  opacity:.8;
+  border-radius:2px;
+}
+
 /* =========================
    Footer
    ========================= */
@@ -430,21 +447,4 @@ body.nav-locked{ overflow:hidden; }
   .wrap{ padding:18px; }
   h1{ font-size:28px; }
   h2{ font-size:22px; }
-}
-
-/* Subtle shadow when scrolling */
-.nav{
-  transition: box-shadow .18s ease, background .18s ease;
-}
-
-.nav.is-scrolled{
-  box-shadow: 0 6px 18px rgba(11,18,32,.08);
-  background: rgba(244,246,251,.94);
-}
-
-/* Active section – refined underline */
-.links a.active::after{
-  height:2px;
-  bottom:2px;
-  opacity:.8;
 }
