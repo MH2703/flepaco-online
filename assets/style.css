@@ -441,3 +441,10 @@ body.nav-locked{ overflow:hidden; }
   box-shadow: 0 6px 18px rgba(11,18,32,.08);
   background: rgba(244,246,251,.94);
 }
+
+/* Active section – refined underline */
+.links a.active::after{
+  height:2px;
+  bottom:2px;
+  opacity:.8;
+}
