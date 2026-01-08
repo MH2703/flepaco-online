@@ -140,6 +140,12 @@
       position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;
     }
     .navToggle svg{width:22px;height:22px;display:block}
+
+    /* icon state */
+    .iconClose{display:none}
+    .nav.is-open .iconHamburger{display:none}
+    .nav.is-open .iconClose{display:block}
+
     @media(max-width:900px){
       .nav{display:flex;align-items:center;gap:12px}
       .navToggle{display:inline-flex;align-items:center;justify-content:center}
@@ -185,8 +191,15 @@
 
   <button class="navToggle" type="button" aria-controls="primaryNavDe" aria-expanded="false">
     <span class="sr-only">Menü öffnen</span>
-    <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+
+    <!-- Hamburger -->
+    <svg class="iconHamburger" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
       <path d="M4 6h16M4 12h16M4 18h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+
+    <!-- Close (X) -->
+    <svg class="iconClose" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
     </svg>
   </button>
 
@@ -284,7 +297,7 @@
   </div>
 </section>
 
-<!-- LEISTUNGEN (OUTCOME) -->
+<!-- LEISTUNGEN -->
 <section id="leistungen" class="page" aria-label="Leistungen">
   <div class="chapter"><div class="num">03</div><h2>Leistungen</h2></div>
 
@@ -329,7 +342,7 @@
   </div>
 </section>
 
-<!-- KONTAKT (PRO, NO BACKEND) -->
+<!-- KONTAKT -->
 <section id="kontakt" class="page" aria-label="Kontakt">
   <div class="chapter"><div class="num">05</div><h2>Kontakt</h2></div>
 
@@ -404,11 +417,13 @@
   // Year
   document.getElementById("y").textContent = new Date().getFullYear();
 
-  // Burger menu (accessible)
+  // Burger menu (accessible) + close on scroll
   (function(){
     const header = document.getElementById("siteNavDe");
     const btn = header.querySelector(".navToggle");
     const nav = document.getElementById("primaryNavDe");
+
+    function isOpen(){ return header.classList.contains("is-open"); }
 
     function setOpen(open){
       header.classList.toggle("is-open", open);
@@ -417,11 +432,11 @@
       if(open) nav.querySelector("a")?.focus();
     }
 
-    btn.addEventListener("click", ()=> setOpen(!header.classList.contains("is-open")));
+    btn.addEventListener("click", ()=> setOpen(!isOpen()));
 
     // Close on escape
     document.addEventListener("keydown", (e)=>{
-      if(e.key === "Escape" && header.classList.contains("is-open")){
+      if(e.key === "Escape" && isOpen()){
         setOpen(false);
         btn.focus();
       }
@@ -434,12 +449,17 @@
       setOpen(false);
     });
 
-    // Close when clicking outside (mobile only but harmless)
+    // Close when clicking outside
     document.addEventListener("click", (e)=>{
-      if(!header.classList.contains("is-open")) return;
+      if(!isOpen()) return;
       if(header.contains(e.target)) return;
       setOpen(false);
     });
+
+    // Close on scroll (only if open; passive for performance)
+    window.addEventListener("scroll", ()=>{
+      if(isOpen()) setOpen(false);
+    }, {passive:true});
   })();
 
   // Active nav
