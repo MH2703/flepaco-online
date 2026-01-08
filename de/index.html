@@ -27,6 +27,7 @@
       .page{ scroll-snap-align:start; scroll-snap-stop:normal; }
       #kontakt{ scroll-snap-align:none; }
     }
+
     .page{ scroll-margin-top:110px; padding:64px 0; position:relative; }
 
     .page:not(#top)::before{
@@ -129,7 +130,7 @@
           Marktvergleich, Machbarkeitsanalyse, Risiko- und Kostenbewertung.
         </p>
       </div>
-      <button class="toggle">Mehr anzeigen</button>
+      <button class="toggle" type="button">Mehr anzeigen</button>
     </div>
 
     <div class="card">
@@ -141,7 +142,7 @@
           regulatorische Anforderungen.
         </p>
       </div>
-      <button class="toggle">Mehr anzeigen</button>
+      <button class="toggle" type="button">Mehr anzeigen</button>
     </div>
 
     <div class="card">
@@ -153,7 +154,7 @@
           Industrialisierung.
         </p>
       </div>
-      <button class="toggle">Mehr anzeigen</button>
+      <button class="toggle" type="button">Mehr anzeigen</button>
     </div>
   </div>
 </section>
@@ -202,29 +203,34 @@
 </div>
 
 <script>
-document.getElementById("y").textContent=new Date().getFullYear();
+  // Year
+  document.getElementById("y").textContent = new Date().getFullYear();
 
-/* Active nav */
-const sections=document.querySelectorAll("section[id]");
-const links=document.querySelectorAll(".links a[href^='#']");
-new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){
-      links.forEach(l=>l.classList.toggle("active",l.getAttribute("href")==="#"+e.target.id));
-    }
-  });
-},{threshold:.6}).observe(sections[0]);
-sections.forEach(s=>new IntersectionObserver(()=>{},{}));
+  // Active navigation (EN-style: one observer, observe all sections)
+  const sections = document.querySelectorAll("section[id]");
+  const links = document.querySelectorAll(".links a[href^='#']");
 
-/* Read more */
-document.querySelectorAll(".toggle").forEach(btn=>{
-  btn.addEventListener("click",()=>{
-    const more=btn.previousElementSibling;
-    const open=more.style.display==="block";
-    more.style.display=open?"none":"block";
-    btn.textContent=open?"Mehr anzeigen":"Weniger anzeigen";
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        links.forEach(l => {
+          l.classList.toggle("active", l.getAttribute("href") === "#" + e.target.id);
+        });
+      }
+    });
+  }, { threshold: .6 });
+
+  sections.forEach(s => observer.observe(s));
+
+  // Read more toggle
+  document.querySelectorAll(".toggle").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const more = btn.previousElementSibling;
+      const open = more.style.display === "block";
+      more.style.display = open ? "none" : "block";
+      btn.textContent = open ? "Mehr anzeigen" : "Weniger anzeigen";
+    });
   });
-});
 </script>
 </body>
 </html>
