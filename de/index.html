@@ -13,7 +13,7 @@
 
   <style>
     html{scroll-behavior:smooth}
-    :root{scroll-padding-top:110px}
+    :root{scroll-padding-top:120px}
 
     .wrap{max-width:980px;margin:0 auto}
     h1,h2,h3{line-height:1.18;letter-spacing:-.01em}
@@ -119,26 +119,52 @@
     .footer a{color:inherit;text-decoration:none}
     .footer a:hover{text-decoration:underline}
 
+    /* --- Sticky header (always accessible) --- */
+    header.nav{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      background:rgba(244,246,251,.80);
+      backdrop-filter:saturate(180%) blur(8px);
+      -webkit-backdrop-filter:saturate(180%) blur(8px);
+      border-bottom:1px solid rgba(11,18,32,.08);
+      padding:10px 0;
+    }
+
     /* --- Mobile nav (burger) --- */
     .nav{position:relative}
     .navToggle{
       display:none;
       margin-left:auto;
       border:1px solid rgba(11,18,32,.12);
-      background:rgba(255,255,255,.90);
+      background:rgba(255,255,255,.92);
       border-radius:12px;
-      padding:10px 12px;
+      width:44px;
+      height:44px;
+      padding:0;
       line-height:0;
       cursor:pointer;
+      position:relative;
       -webkit-tap-highlight-color:transparent;
     }
     .navToggle .sr-only{
       position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;
     }
-    .navToggle svg{width:22px;height:22px;display:block}
-    .iconClose{display:none}
-    .nav.is-open .iconHamburger{display:none}
-    .nav.is-open .iconClose{display:block}
+
+    /* Robust icon toggle (never show both visually) */
+    .navToggle svg{
+      width:22px;height:22px;
+      position:absolute;
+      inset:0;
+      margin:auto;
+      pointer-events:none;
+      opacity:1;
+      transition:opacity .12s ease;
+      display:block; /* even if external CSS sets inline */
+    }
+    .iconClose{opacity:0}
+    .nav.is-open .iconHamburger{opacity:0}
+    .nav.is-open .iconClose{opacity:1}
 
     @media(max-width:900px){
       .nav{display:flex;align-items:center;gap:12px}
@@ -150,11 +176,11 @@
         top:100%;
         margin-top:10px;
         padding:10px;
-        background:rgba(255,255,255,.96);
+        background:rgba(255,255,255,.97);
         border:1px solid rgba(11,18,32,.12);
         border-radius:16px;
         box-shadow:0 16px 40px rgba(11,18,32,.10);
-        z-index:999;
+        z-index:1100; /* above sticky header */
       }
       .nav.is-open .links{
         display:flex;
@@ -357,7 +383,7 @@
     function isOpen(){ return header.classList.contains("is-open"); }
 
     function lockScroll(lock){
-      if(!isMobile()) return; // only lock on mobile breakpoint
+      if(!isMobile()) return;
       body.classList.toggle("nav-locked", lock);
     }
 
@@ -394,7 +420,6 @@
       if(isOpen()) setOpen(false);
     }, {passive:true});
 
-    // If resized to desktop while open → close + unlock
     window.addEventListener("resize", ()=>{
       if(!isMobile() && isOpen()) setOpen(false);
       if(!isMobile()) lockScroll(false);
@@ -435,7 +460,7 @@
     }
 
     const subject = topic ? `Anfrage: ${topic}` : "Anfrage über Website";
-    const body =
+    const bodyText =
 `Name: ${name || "-"}
 E-Mail: ${email}
 Thema: ${topic || "-"} 
@@ -446,7 +471,7 @@ ${msg}`;
     statusDe.dataset.show = "true";
     statusDe.textContent = "Danke! Ich öffne jetzt einen E-Mail-Entwurf…";
 
-    const mailto = `mailto:hello@flepaco.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    const mailto = `mailto:hello@flepaco.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(bodyText)}`;
     window.location.href = mailto;
   });
 </script>
